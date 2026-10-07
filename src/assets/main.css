@@ -1,0 +1,133 @@
+/*
+ * Global styles: design tokens, reset, base element rules and the theme view-transition.
+ * Fonts (JetBrains Mono 400/500/700, Inter 400/500/600) are loaded from Google Fonts in index.html.
+ * The theme is switched ONLY through <html data-theme="light|dark"> (see src/composables/useTheme.ts).
+ */
+
+:root {
+  /* Surfaces */
+  --canvas: #f3f4f0;
+  --surface: #fafbf9;
+
+  /* Text */
+  --ink: #181b19;
+  --text-secondary: #3d3f3b;
+  --text-muted: #5f5e5a;
+
+  /* Accent */
+  --signal: #2b8a60;
+  --signal-text: #1d6e4e;
+  --signal-soft: #d9efe4;
+
+  /* Lines */
+  --border: #e2e1da;
+  --border-strong: #cfcec5;
+
+  /* Type */
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --canvas: #12140f;
+  --surface: #181b15;
+
+  --ink: #f2f3ee;
+  --text-secondary: #b9bbb3;
+  --text-muted: #8b8d85;
+
+  --signal: #3fbe85;
+  --signal-text: #4fcb92;
+  --signal-soft: #1f3a2c;
+
+  --border: #2a2d24;
+  --border-strong: #3a3d33;
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Stacking context so the home cursor-trail layer (z-index: -1) paints above the body background
+   but below every piece of page content. */
+#app {
+  isolation: isolate;
+}
+
+body {
+  background-color: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.3s ease,
+    color 0.2s ease;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---- Theme switch (circular reveal driven by useTheme) ------------------------------------- */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+/* While the snapshot is taken, the new colours must apply instantly. */
+.theme-transitioning body {
+  transition: none;
+}
+
+/* ---- Shared helpers ------------------------------------------------------------------------- */
+
+/* Visually hidden but available to assistive technology. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* "No" wobble played by locked cards while pressed (project cards, archive cards, post cards).
+   Usage: animation: locked-shake 0.36s ease-in-out; */
+@keyframes locked-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-4px) rotate(-0.2deg);
+  }
+
+  50% {
+    transform: translateX(4px) rotate(0.2deg);
+  }
+
+  75% {
+    transform: translateX(-2px);
+  }
+}

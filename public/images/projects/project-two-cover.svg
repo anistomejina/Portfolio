@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Project cover placeholder">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="#132019"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <!-- window -->
+  <rect x="230" y="170" width="740" height="460" rx="22" fill="#1b2b22" stroke="#2f4a3b" stroke-width="3"/>
+  <rect x="230" y="170" width="740" height="56" rx="22" fill="#203528"/>
+  <rect x="230" y="204" width="740" height="22" fill="#203528"/>
+  <circle cx="270" cy="198" r="8" fill="#d36d5f"/>
+  <circle cx="298" cy="198" r="8" fill="#d8b45a"/>
+  <circle cx="326" cy="198" r="8" fill="#3fbe85"/>
+  <!-- chart bars -->
+  <g fill="#3fbe85">
+    <rect x="300" y="470" width="56" height="110" rx="6" opacity="0.55"/>
+    <rect x="384" y="420" width="56" height="160" rx="6" opacity="0.7"/>
+    <rect x="468" y="360" width="56" height="220" rx="6" opacity="0.85"/>
+    <rect x="552" y="300" width="56" height="280" rx="6"/>
+  </g>
+  <!-- text lines -->
+  <g fill="#579ed5">
+    <rect x="660" y="300" width="240" height="14" rx="7"/>
+    <rect x="660" y="336" width="190" height="14" rx="7" opacity="0.7"/>
+    <rect x="660" y="372" width="220" height="14" rx="7" opacity="0.5"/>
+  </g>
+  <rect x="660" y="440" width="230" height="140" rx="14" fill="none" stroke="#3fbe85" stroke-opacity="0.6" stroke-width="3" stroke-dasharray="10 10"/>
+  <text x="775" y="518" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="22" fill="#9fb7a8">your cover</text>
+</svg>

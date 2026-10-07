@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Project cover placeholder">
+  <defs>
+    <radialGradient id="glow" cx="0.55" cy="0.48" r="0.6">
+      <stop offset="0" stop-color="#2b8a60" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#2b8a60" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#101821"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+  <!-- connections -->
+  <g stroke="#579ed5" stroke-opacity="0.55" stroke-width="4" fill="none">
+    <path d="M660 384 L470 250"/>
+    <path d="M660 384 L455 520"/>
+    <path d="M660 384 L860 260"/>
+    <path d="M660 384 L880 520"/>
+    <path d="M470 250 L455 520"/>
+    <path d="M860 260 L880 520"/>
+  </g>
+  <!-- nodes -->
+  <circle cx="660" cy="384" r="54" fill="#3fbe85"/>
+  <circle cx="660" cy="384" r="80" fill="none" stroke="#3fbe85" stroke-opacity="0.35" stroke-width="4"/>
+  <g fill="#1b2a38" stroke="#579ed5" stroke-width="4">
+    <circle cx="470" cy="250" r="30"/>
+    <circle cx="455" cy="520" r="30"/>
+    <circle cx="860" cy="260" r="30"/>
+    <circle cx="880" cy="520" r="30"/>
+  </g>
+  <circle cx="1000" cy="160" r="9" fill="#d36d5f"/>
+  <circle cx="1000" cy="160" r="20" fill="none" stroke="#d36d5f" stroke-opacity="0.25" stroke-width="10"/>
+  <text x="660" y="392" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="22" font-weight="700" fill="#101821">03</text>
+</svg>
