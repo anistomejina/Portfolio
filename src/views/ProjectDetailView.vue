@@ -5,6 +5,7 @@ import { RouterLink, useRoute } from 'vue-router'
 import PreviewRail from '@/components/PreviewRail.vue'
 import { useDocumentTitle } from '@/composables/useDocumentTitle'
 import { useLocale } from '@/composables/useLocale'
+import { useOutlineHash } from '@/composables/useOutlineHash'
 import { pageTitle } from '@/config/site'
 import { localeCodes } from '@/i18n/messages'
 import { getProjectMarkdown } from '@/utils/content'
@@ -29,12 +30,15 @@ const project = computed(
 const markdown = computed(() => getProjectMarkdown(slug.value, locale.value))
 
 /** Rendered once per (slug, language): `{ html, headings }`. */
-const documentBody = computed(() => (markdown.value ? renderMarkdownDocument(markdown.value.source) : null))
+const documentBody = computed(() => (markdown.value ? renderMarkdownDocument(markdown.value.source, markdown.value.locale) : null))
 /** External links in the body also tell screen-reader users that they open a new tab. */
 const articleHtml = computed(() =>
   addNewTabHints(documentBody.value?.html ?? '', copy.value.accessibility?.opensInNewTab ?? ''),
 )
 const outline = computed(() => documentBody.value?.headings ?? [])
+
+/** Section hashes (#overview / #uberblick) follow the language and work in shared links. */
+useOutlineHash(() => outline.value, (code) => getProjectMarkdown(slug.value, code))
 
 /** When the body fell back to another language, say so to screen readers and hyphenation. */
 const articleLang = computed(() => {

@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router'
 import LockIcon from '@/components/icons/LockIcon.vue'
 import { useLocale } from '@/composables/useLocale'
 import type { Post } from '@/types/content'
-import { formatShortDate } from '@/utils/formatDate'
+import { formatReadingTime, formatShortDate } from '@/utils/formatDate'
 import { hasHref } from '@/utils/links'
 
 const props = defineProps<{
@@ -67,6 +67,7 @@ const minutes = computed(() => {
   const value = props.post.readingTimeMinutes
   return typeof value === 'number' && Number.isFinite(value) && value > 0 ? value : 0
 })
+const readingTime = computed(() => (minutes.value > 0 ? formatReadingTime(minutes.value, locale.value) : ''))
 const hasFooter = computed(() => isLocked.value || Boolean(publishedAt.value) || minutes.value > 0)
 </script>
 
@@ -109,7 +110,7 @@ const hasFooter = computed(() => isLocked.value || Boolean(publishedAt.value) ||
           <template v-else>
             <time v-if="publishedAt" :datetime="publishedAt">{{ shortDate }}</time>
             <span v-if="publishedAt && minutes" aria-hidden="true">·</span>
-            <span v-if="minutes">{{ minutes }} min</span>
+            <span v-if="minutes">{{ readingTime }}</span>
           </template>
         </div>
       </div>

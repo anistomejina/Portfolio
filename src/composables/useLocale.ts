@@ -32,7 +32,10 @@ function writeStoredLocale(value: Locale): void {
   }
 }
 
-/** The browser's primary language (first two letters of navigator.language), when supported. */
+/**
+ * The browser's primary language, when supported: the first two letters of navigator.language,
+ * so every regional variant maps to its language ("de-DE", "de-AT", "de-CH" -> de; "en-GB" -> en).
+ */
 function detectBrowserLocale(): Locale | null {
   if (!isBrowser) return null
   const candidate = navigator.language?.slice(0, 2).toLowerCase()
@@ -65,7 +68,7 @@ export function useLocale() {
     locale: readonly(locale),
     /** Message tree of the current locale. */
     copy,
-    /** BCP 47 code of the current locale ("en-US" / "pt-BR"). */
+    /** BCP 47 code of the current locale ("en-US" / "de-DE"). */
     localeCode,
     /** Switch language instantly (persisted). */
     setLocale,

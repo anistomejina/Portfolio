@@ -75,6 +75,26 @@ a {
   color: inherit;
 }
 
+/* ---- German text ---------------------------------------------------------------------------- */
+
+/* German compounds ("veröffentlichte", "Softwareentwicklung") can be wider than a narrow column.
+   On German pages long words may hyphenate (where the browser has a German dictionary; only words
+   of 12+ letters, keeping at least 5 on each side of the break), and a word that still does not fit
+   breaks instead of overflowing or being clipped. English pages keep the default wrapping. */
+body:lang(de) {
+  overflow-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  hyphenate-limit-chars: 12 5 5;
+}
+
+/* Code, and passages in another language (a body that fell back to English), are never hyphenated. */
+body:lang(de) :is(code, pre, kbd, samp),
+body:lang(de) :not(:lang(de)) {
+  -webkit-hyphens: manual;
+  hyphens: manual;
+}
+
 /* ---- Theme switch (circular reveal driven by useTheme) ------------------------------------- */
 
 ::view-transition-old(root),

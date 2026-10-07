@@ -1,6 +1,7 @@
 import MarkdownIt from 'markdown-it'
-import type { RendererRule, Token } from 'markdown-it'
+import type { MarkdownIt as MarkdownParser, RendererRule, Token } from 'markdown-it'
 
+import { defaultLocale, type Locale } from '@/i18n/messages'
 import type { MarkdownHeading, RenderedMarkdown } from '@/types/content'
 import { asset } from '@/utils/assets'
 
@@ -9,6 +10,7 @@ import { asset } from '@/utils/assets'
  *
  * - Raw HTML in markdown is escaped (html: false), so the output is safe for v-html.
  * - Bare URLs become links (linkify) and quotes/dashes/ellipses are prettified (typographer).
+ *   Straight quotes become the typographic quotes of the body's language: “English”, „Deutsch“.
  * - http(s) links open in a new tab with rel="noopener noreferrer".
  * - Site-relative links and images ("/images/x.svg") are prefixed with the deploy base.
  * - Images get loading="lazy" and decoding="async".
@@ -16,7 +18,31 @@ import { asset } from '@/utils/assets'
  * - A leading "# Title" is dropped: the page already renders the title as its <h1>.
  * - Every <h2> gets a slug id and is collected into `headings` (feeds the PreviewRail).
  */
-const md = new MarkdownIt({ html: false, linkify: true, typographer: true })
+const MARKDOWN_OPTIONS = { html: false, linkify: true, typographer: true } as const
+
+/** Typographer quote pairs per language: double open/close, then single open/close. */
+const QUOTES: Record<Locale, string> = {
+  en: '“”‘’',
+  de: '„“‚‘',
+}
+
+/** Renderer (all output rules below are registered on it) and parser for English bodies. */
+const md = new MarkdownIt({ ...MARKDOWN_OPTIONS, quotes: QUOTES.en })
+
+/**
+ * Smart quotes are applied while parsing, so each language gets its own parser; rendering always
+ * goes through `md`, which carries the custom rules. Parsers are created on first use.
+ */
+const parsers = new Map<Locale, MarkdownParser>([['en', md]])
+
+function parserFor(locale: Locale): MarkdownParser {
+  let parser = parsers.get(locale)
+  if (!parser) {
+    parser = new MarkdownIt({ ...MARKDOWN_OPTIONS, quotes: QUOTES[locale] })
+    parsers.set(locale, parser)
+  }
+  return parser
+}
 
 const EXTERNAL_URL = /^https?:\/\//i
 const SITE_RELATIVE = /^\/(?!\/)/
@@ -80,12 +106,18 @@ function inlineSourceText(token: Token | undefined): string {
   ).trim()
 }
 
-/** "Introdução ao Projeto!" -> "introducao-ao-projeto" ('' when nothing is left). */
+/**
+ * Heading text -> ASCII id: "Überblick & Straßen-Setup!" -> "uberblick-strassen-setup"
+ * ('' when nothing is left). Accents and umlaut dots are dropped (é -> e, ü -> u), ß / ẞ become
+ * "ss", and every other run of non-alphanumerics becomes one "-". Ids are plain ASCII, so hash
+ * links (#uberblick) need no percent-encoding.
+ */
 export function slugify(text: string): string {
   return text
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/ß/g, 'ss')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
 }
@@ -109,10 +141,13 @@ function dropLeadingTitle(tokens: Token[]): Token[] {
   return tokens
 }
 
-/** Renders markdown to HTML and extracts the h2 outline ({ id, label, description }). */
-export function renderMarkdownDocument(source: string): RenderedMarkdown {
+/**
+ * Renders markdown to HTML and extracts the h2 outline ({ id, label, description }).
+ * `locale` is the language the source is written in (it picks the typographic quotes).
+ */
+export function renderMarkdownDocument(source: string, locale: Locale = defaultLocale): RenderedMarkdown {
   const env = {}
-  const tokens = dropLeadingTitle(md.parse(source ?? '', env))
+  const tokens = dropLeadingTitle(parserFor(locale).parse(source ?? '', env))
   const headings: MarkdownHeading[] = []
   const usedIds = new Map<string, number>()
 
@@ -133,8 +168,8 @@ export function renderMarkdownDocument(source: string): RenderedMarkdown {
 }
 
 /** Convenience: HTML only. */
-export function renderMarkdown(source: string): string {
-  return renderMarkdownDocument(source).html
+export function renderMarkdown(source: string, locale: Locale = defaultLocale): string {
+  return renderMarkdownDocument(source, locale).html
 }
 
 const HTML_ESCAPES: Record<string, string> = {

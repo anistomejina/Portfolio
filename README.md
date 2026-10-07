@@ -1,6 +1,6 @@
 # Portfolio
 
-A personal portfolio built with Vue 3, Vite and TypeScript. It has a home page, an experience page, a project archive with case-study pages, and a blog. Every page is available in English and Portuguese, with light and dark themes.
+A personal portfolio built with Vue 3, Vite and TypeScript. It has a home page, an experience page, a project archive with case-study pages, and a blog. Every page is available in English and German, with light and dark themes.
 
 Live site: `https://anistomejina.github.io/Portfolio/` (after the first deploy).
 
@@ -33,7 +33,7 @@ Also update the `<title>` and `<meta name="description">` in `index.html`, and t
 
 ### 2. Text, projects, posts and experience: `src/i18n/messages.ts`
 
-The file has one block per language: `en` (English) and `pt` (Português). Both blocks have the same structure.
+The file has one block per language: `en` (English) and `de` (Deutsch). Both blocks have the same structure.
 
 - **Role sentence, stats and tech pills:** `profile` and `techStack` near the top of the file.
 - **Projects:** `projects.items`. The first project is the featured one. Useful flags:
@@ -52,14 +52,15 @@ Each page with `hasDetails: true` needs a markdown file per language:
 
 ```
 src/content/projects/<slug>/en.md
-src/content/projects/<slug>/pt.md
+src/content/projects/<slug>/de.md
 src/content/posts/<slug>/en.md
-src/content/posts/<slug>/pt.md
+src/content/posts/<slug>/de.md
 ```
 
-- If a language file is missing, the English file is used, then the Portuguese one.
+- If a language file is missing, the English file is used, then the German one.
 - Do not start the file with a `# Title`: the page already shows the title.
 - Every `## Heading` becomes an entry in the side outline. Its first paragraph is the preview text, so keep it to one sentence.
+- Give both languages the same `## Heading`s in the same order. Section links (`#overview`, `#uberblick`) are matched by position, so a link keeps pointing at the same section after a language switch or when it is opened in the other language.
 - You can use lists, `inline code`, fenced code blocks, tables, quotes, links and images.
 
 ### 4. Images and files: `public/`
@@ -87,7 +88,7 @@ The build uses `BASE_PATH=/Portfolio/` because the site is served from `https://
 index.html                 Page shell, title and description
 public/                    Favicon, images and files served as-is
 src/config/site.ts         Your name and links
-src/i18n/messages.ts       All text and content, in English and Portuguese
+src/i18n/messages.ts       All text and content, in English and German
 src/content/               Markdown for project pages and blog posts
 src/views/                 One component per page
 src/components/            Navigation, cards, hero and other building blocks

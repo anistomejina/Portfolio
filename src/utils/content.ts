@@ -24,7 +24,7 @@ export type MarkdownSource = {
   locale: Locale
 }
 
-const FALLBACK_ORDER: readonly Locale[] = [defaultLocale, 'en', 'pt']
+const FALLBACK_ORDER: readonly Locale[] = [defaultLocale, 'en', 'de']
 
 function lookup(
   files: Record<string, string>,
@@ -41,12 +41,12 @@ function lookup(
   return null
 }
 
-/** Markdown body of a project: requested locale, then English, then Portuguese; null when none. */
+/** Markdown body of a project: requested locale, then English, then German; null when none. */
 export function getProjectMarkdown(slug: string, locale: Locale): MarkdownSource | null {
   return lookup(projectFiles, 'projects', slug, locale)
 }
 
-/** Markdown body of a blog post: requested locale, then English, then Portuguese; null when none. */
+/** Markdown body of a blog post: requested locale, then English, then German; null when none. */
 export function getPostMarkdown(slug: string, locale: Locale): MarkdownSource | null {
   return lookup(postFiles, 'posts', slug, locale)
 }

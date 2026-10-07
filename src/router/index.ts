@@ -5,7 +5,39 @@ import { prefersReducedMotion } from '@/utils/motion'
 /** Space left above an element when a URL hash scrolls to it. */
 const HASH_SCROLL_OFFSET = 24
 
-const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
+/** Longest wait for images still loading before a hash scroll starts anyway. */
+const HASH_SCROLL_IMAGE_WAIT_MS = 1500
+
+/**
+ * Resolves once every eagerly loaded image that is still in flight has loaded or failed (or after
+ * HASH_SCROLL_IMAGE_WAIT_MS). Images have no reserved height until they load (e.g. the hero image
+ * of a project page), so scrolling earlier would stop one image-height short of the target.
+ * Lazy images are not awaited: they load around the viewport and scroll anchoring absorbs them.
+ */
+function eagerImagesSettled(): Promise<void> {
+  const pending = Array.from(document.images).filter(
+    (image) => !image.complete && image.loading !== 'lazy',
+  )
+  if (pending.length === 0) return Promise.resolve()
+
+  return new Promise((resolve) => {
+    let remaining = pending.length
+    const timer = window.setTimeout(resolve, HASH_SCROLL_IMAGE_WAIT_MS)
+    const settle = () => {
+      remaining -= 1
+      if (remaining === 0) {
+        window.clearTimeout(timer)
+        resolve()
+      }
+    }
+    for (const image of pending) {
+      image.addEventListener('load', settle, { once: true })
+      image.addEventListener('error', settle, { once: true })
+    }
+  })
+}
+
+const scrollBehavior: RouterScrollBehavior = async (to, _from, savedPosition) => {
   // Back/forward: restore where the visitor was.
   if (savedPosition) return savedPosition
 
@@ -18,6 +50,7 @@ const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
     } catch {
       // Malformed escape sequence: use the hash as written.
     }
+    await eagerImagesSettled()
     return {
       el: selector,
       top: HASH_SCROLL_OFFSET,

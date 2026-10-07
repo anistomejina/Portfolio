@@ -5,10 +5,11 @@ import { RouterLink, useRoute } from 'vue-router'
 import PreviewRail from '@/components/PreviewRail.vue'
 import { useDocumentTitle } from '@/composables/useDocumentTitle'
 import { useLocale } from '@/composables/useLocale'
+import { useOutlineHash } from '@/composables/useOutlineHash'
 import { pageTitle } from '@/config/site'
 import { localeCodes } from '@/i18n/messages'
 import { getPostMarkdown } from '@/utils/content'
-import { formatShortDate } from '@/utils/formatDate'
+import { formatReadingTime, formatShortDate } from '@/utils/formatDate'
 import { hasHref } from '@/utils/links'
 import { addNewTabHints, renderMarkdownDocument } from '@/utils/renderMarkdown'
 
@@ -35,7 +36,7 @@ const post = computed(
 
 /** Body in the current language, falling back to another language when it has not been written yet. */
 const markdown = computed(() => (post.value ? getPostMarkdown(slug.value, locale.value) : null))
-const rendered = computed(() => (markdown.value ? renderMarkdownDocument(markdown.value.source) : null))
+const rendered = computed(() => (markdown.value ? renderMarkdownDocument(markdown.value.source, markdown.value.locale) : null))
 
 // ---- External links in the body: tell screen-reader users they open a new tab ------------------
 
@@ -45,6 +46,9 @@ const articleHtml = computed(() => {
 })
 
 const outline = computed(() => rendered.value?.headings ?? [])
+
+/** Section hashes (#overview / #uberblick) follow the language and work in shared links. */
+useOutlineHash(() => outline.value, (code) => getPostMarkdown(slug.value, code))
 
 /** When the body is shown in a fallback language, mark it so screen readers switch voice. */
 const articleLang = computed(() => {
@@ -76,7 +80,7 @@ const metaParts = computed((): MetaPart[] => {
   }
   const minutes = item.readingTimeMinutes
   if (typeof minutes === 'number' && Number.isFinite(minutes) && minutes > 0) {
-    parts.push({ key: 'minutes', text: `${minutes} min` })
+    parts.push({ key: 'minutes', text: formatReadingTime(minutes, locale.value) })
   }
   return parts
 })

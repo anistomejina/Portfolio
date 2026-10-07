@@ -1,5 +1,5 @@
 /**
- * All visible text of the site, in English (en) and Portuguese (pt).
+ * All visible text of the site, in English (en) and German (de).
  *
  * - UI labels (buttons, eyebrows, status words, accessibility labels) are ready to use.
  * - Everything marked "YOUR CONTENT" is placeholder text: replace it with your own.
@@ -23,23 +23,23 @@ import { asset } from '@/utils/assets'
 // Locales
 // ---------------------------------------------------------------------------------------------
 
-export type Locale = 'en' | 'pt'
+export type Locale = 'en' | 'de'
 
-/** Supported locales, in the order the PT / EN buttons appear in the nav. */
-export const availableLocales: readonly Locale[] = ['pt', 'en']
+/** Supported locales, in the order the DE / EN buttons appear in the nav. */
+export const availableLocales: readonly Locale[] = ['de', 'en']
 
 /** Used when there is no saved choice and the browser language is not supported. */
 export const defaultLocale: Locale = 'en'
 
 /** Native names: aria-label and title of the language buttons. */
 export const localeNames: Record<Locale, string> = {
-  pt: 'Português',
+  de: 'Deutsch',
   en: 'English',
 }
 
 /** BCP 47 codes: <html lang> and Intl date formatting. */
 export const localeCodes: Record<Locale, string> = {
-  pt: 'pt-BR',
+  de: 'de-DE',
   en: 'en-US',
 }
 
@@ -409,45 +409,45 @@ const en: Messages = {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Português
+// Deutsch
 // ---------------------------------------------------------------------------------------------
 
-const pt: Messages = {
+const de: Messages = {
   navigation: {
-    home: 'home',
-    experience: 'experiência',
-    projects: 'projetos',
+    home: 'start',
+    experience: 'erfahrung',
+    projects: 'projekte',
     blog: 'blog',
   },
 
   accessibility: {
-    mainNavigation: 'Navegação principal',
-    languageSelector: 'Selecionar idioma',
-    switchToLightTheme: 'Mudar para o tema claro',
-    switchToDarkTheme: 'Mudar para o tema escuro',
-    techStack: 'Principais tecnologias',
-    activityIndicators: 'Indicadores de atividade',
-    profilePhoto: `Foto de ${site.ownerName}`,
-    opensInNewTab: '(abre em uma nova aba)',
+    mainNavigation: 'Hauptnavigation',
+    languageSelector: 'Sprache auswählen',
+    switchToLightTheme: 'Zum hellen Design wechseln',
+    switchToDarkTheme: 'Zum dunklen Design wechseln',
+    techStack: 'Wichtigste Technologien',
+    activityIndicators: 'Kennzahlen',
+    profilePhoto: `Foto von ${site.ownerName}`,
+    opensInNewTab: '(öffnet in neuem Tab)',
   },
 
   profile: {
-    cardLabel: 'perfil',
-    // SEU CONTEÚDO
-    roleStart: 'Escreva aqui sua função, com foco em',
-    focusPrimary: 'área de foco 1',
-    roleConnector: 'e',
-    focusSecondary: 'área de foco 2',
-    availability: 'disponível para projetos e oportunidades',
-    // SEU CONTEÚDO
+    cardLabel: 'profil',
+    // YOUR CONTENT: the role sentence under your name.
+    roleStart: 'Beschreiben Sie hier Ihre Rolle, mit Fokus auf',
+    focusPrimary: 'Schwerpunkt 1',
+    roleConnector: 'und',
+    focusSecondary: 'Schwerpunkt 2',
+    availability: 'offen für Projekte und neue Herausforderungen',
+    // YOUR CONTENT
     stats: [
-      { value: '0', label: 'projetos criados' },
-      { value: '0', label: 'publicações escritas' },
-      { value: '0', label: 'anos de experiência' },
+      { value: '0', label: 'Projekte' },
+      { value: '0', label: 'Beiträge' },
+      { value: '0', label: 'Jahre Erfahrung' },
     ],
     socialLinks: [
       {
-        label: 'baixar currículo',
+        label: 'CV herunterladen',
         href: links.resume,
         glyph: '↓',
         primary: true,
@@ -455,30 +455,30 @@ const pt: Messages = {
       },
       { label: 'LinkedIn', href: links.linkedin, brand: 'linkedin' },
       { label: 'GitHub', href: links.github, brand: 'github' },
-      { label: 'e-mail', href: links.email, brand: 'email' },
+      { label: 'E-Mail', href: links.email, brand: 'email' },
     ],
   },
 
   posts: {
     eyebrow: '~/blog',
-    sectionTitle: 'Publicações recentes',
-    featuredLabel: 'write-up em destaque',
-    readArticle: 'ler artigo',
-    viewAllPosts: 'ver todas as publicações',
-    archiveTitle: 'Minhas publicações',
-    inProgressLabel: 'em andamento',
-    placeholderLabel: 'em breve',
-    comingSoon: 'Em breve',
-    backToBlog: 'voltar ao blog',
-    notFoundTitle: 'Publicação não encontrada',
-    notFoundText: 'Esta publicação não existe ou ainda não possui uma página publicada.',
-    // SEU CONTEÚDO (mesmos slugs do inglês)
+    sectionTitle: 'Neueste Beiträge',
+    featuredLabel: 'ausgewähltes Writeup',
+    readArticle: 'Artikel lesen',
+    viewAllPosts: 'alle Beiträge ansehen',
+    archiveTitle: 'Alle Beiträge',
+    inProgressLabel: 'in Arbeit',
+    placeholderLabel: 'demnächst',
+    comingSoon: 'Demnächst',
+    backToBlog: 'zurück zum Blog',
+    notFoundTitle: 'Beitrag nicht gefunden',
+    notFoundText: 'Dieser Beitrag existiert nicht oder ist noch nicht veröffentlicht.',
+    // YOUR CONTENT (same slugs as English): the home page shows the first two.
     items: [
       {
         slug: 'first-post',
-        title: 'Título da sua primeira publicação',
+        title: 'Titel Ihres ersten Beitrags',
         excerpt:
-          'Escreva uma breve descrição da publicação. Ela aparece no card e como introdução na página da publicação.',
+          'Fassen Sie den Beitrag hier kurz zusammen. Der Text erscheint auf der Karte und als Einleitung der Beitragsseite.',
         category: 'writeup',
         publishedAt: '2026-01-15',
         readingTimeMinutes: 5,
@@ -487,16 +487,16 @@ const pt: Messages = {
       },
       {
         slug: 'work-in-progress',
-        title: 'Publicação em andamento',
-        excerpt: 'Escreva uma breve descrição de uma publicação que você ainda está escrevendo.',
+        title: 'Beitrag in Arbeit',
+        excerpt: 'Beschreiben Sie kurz einen Beitrag, an dem Sie noch arbeiten.',
         category: 'learning',
         hasDetails: true,
         locked: true,
       },
       {
         slug: 'next-post',
-        title: 'Próxima publicação',
-        excerpt: 'Em breve, um novo conteúdo aparecerá aqui.',
+        title: 'Nächster Beitrag',
+        excerpt: 'Hier erscheinen bald neue Inhalte.',
         category: 'notes',
         placeholder: true,
       },
@@ -504,131 +504,131 @@ const pt: Messages = {
   },
 
   experience: {
-    eyebrow: '~/experiência',
-    pageTitle: 'Experiência',
-    toolboxLabel: 'tecnologias & ferramentas',
-    skillsLabel: 'Habilidades',
-    // SEU CONTEÚDO (mesmos slugs do inglês)
+    eyebrow: '~/erfahrung',
+    pageTitle: 'Erfahrung',
+    toolboxLabel: 'Technologien & Tools',
+    skillsLabel: 'Skills',
+    // YOUR CONTENT (same slugs as English): newest first.
     entries: [
       {
         slug: 'role-one',
-        role: 'Seu cargo atual',
-        period: 'jan 2025 — atual · 10 meses',
-        company: 'Nome da empresa',
-        location: 'Cidade, País',
+        role: 'Ihre aktuelle Position',
+        period: 'Jan. 2025 – heute · 10 Monate',
+        company: 'Name des Unternehmens',
+        location: 'Stadt, Land',
         description:
-          'Escreva uma breve descrição das suas responsabilidades e do impacto que você teve nesta função.',
-        skills: ['Habilidade 1', 'Habilidade 2', 'Habilidade 3', 'Habilidade 4', 'Habilidade 5'],
+          'Beschreiben Sie kurz Ihre Aufgaben und was Sie in dieser Position bewirkt haben.',
+        skills: ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4', 'Skill 5'],
       },
       {
         slug: 'role-two',
-        role: 'Cargo anterior',
-        period: 'mar 2023 — dez 2024 · 1 ano e 10 meses',
-        company: 'Outra empresa',
+        role: 'Vorherige Position',
+        period: 'März 2023 – Dez. 2024 · 1 Jahr, 10 Monate',
+        company: 'Weiteres Unternehmen',
         description:
-          'Descreva no que você trabalhou, de qual equipe fez parte e o que entregou.',
-        skills: ['Habilidade 1', 'Habilidade 2', 'Habilidade 3', 'Habilidade 4'],
+          'Beschreiben Sie, woran Sie gearbeitet haben, zu welchem Team Sie gehörten und was Sie umgesetzt haben.',
+        skills: ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4'],
       },
       {
         slug: 'role-three',
-        role: 'Primeiro cargo',
-        period: 'jun 2022 — fev 2023 · 9 meses',
-        company: 'Primeira empresa',
-        description: 'Descreva o que você aprendeu e as principais coisas que construiu aqui.',
-        skills: ['Habilidade 1', 'Habilidade 2', 'Habilidade 3'],
+        role: 'Erste Position',
+        period: 'Juni 2022 – Feb. 2023 · 9 Monate',
+        company: 'Erstes Unternehmen',
+        description: 'Beschreiben Sie, was Sie hier gelernt haben und was Sie hauptsächlich entwickelt haben.',
+        skills: ['Skill 1', 'Skill 2', 'Skill 3'],
       },
     ],
-    // SEU CONTEÚDO
+    // YOUR CONTENT: one row per category ("~/" is stripped for display).
     toolbox: [
       {
-        label: '~/Linguagens',
-        items: ['Linguagem 1', 'Linguagem 2', 'Linguagem 3', 'Linguagem 4', 'Linguagem 5'],
+        label: '~/Sprachen',
+        items: ['Sprache 1', 'Sprache 2', 'Sprache 3', 'Sprache 4', 'Sprache 5'],
       },
       {
-        label: '~/Frameworks e bibliotecas',
+        label: '~/Frameworks & Bibliotheken',
         items: [
           'Framework 1',
           'Framework 2',
           'Framework 3',
-          'Biblioteca 1',
-          'Biblioteca 2',
-          'Biblioteca 3',
+          'Bibliothek 1',
+          'Bibliothek 2',
+          'Bibliothek 3',
         ],
       },
       {
-        label: '~/Ferramentas e plataformas',
-        items: ['Ferramenta 1', 'Ferramenta 2', 'Ferramenta 3', 'Ferramenta 4', 'Ferramenta 5'],
+        label: '~/Tools & Plattformen',
+        items: ['Tool 1', 'Tool 2', 'Tool 3', 'Tool 4', 'Tool 5'],
       },
     ],
   },
 
   projects: {
-    eyebrow: '~/projetos',
-    sectionTitle: 'Meus projetos',
-    pageEyebrow: '~/projetos',
-    pageTitle: 'Minhas construções',
-    newLabel: 'Novo!',
-    liveLabel: 'disponível',
-    inProgressLabel: 'em andamento',
-    problemLabel: 'Problema',
-    resultLabel: 'Resultado',
-    sourceCode: 'código-fonte',
-    viewDemo: 'ver demo',
-    viewProject: 'ver projeto',
-    backToProjects: 'voltar aos projetos',
-    notFoundTitle: 'Projeto não encontrado',
-    notFoundText: 'Este projeto não existe ou ainda não possui uma página publicada.',
-    comingSoon: 'Em breve',
-    viewAllProjects: 'ver todos os projetos',
-    // SEU CONTEÚDO (mesmos slugs do inglês)
+    eyebrow: '~/projekte',
+    sectionTitle: 'Meine Projekte',
+    pageEyebrow: '~/projekte',
+    pageTitle: 'Selbst gebaut',
+    newLabel: 'Neu!',
+    liveLabel: 'verfügbar',
+    inProgressLabel: 'in Arbeit',
+    problemLabel: 'Problem',
+    resultLabel: 'Ergebnis',
+    sourceCode: 'Quellcode',
+    viewDemo: 'Demo ansehen',
+    viewProject: 'Projekt ansehen',
+    backToProjects: 'zurück zu den Projekten',
+    notFoundTitle: 'Projekt nicht gefunden',
+    notFoundText: 'Dieses Projekt existiert nicht oder hat noch keine eigene Seite.',
+    comingSoon: 'Demnächst',
+    viewAllProjects: 'alle Projekte ansehen',
+    // YOUR CONTENT (same slugs as English): the home showcase is designed for three (first = featured).
     items: [
       {
         slug: 'project-one',
         index: '01',
-        tag: 'categoria',
-        title: 'Projeto um',
-        topics: ['Tópico um', 'Tópico dois', 'Tópico três'],
+        tag: 'kategorie',
+        title: 'Projekt eins',
+        topics: ['Thema eins', 'Thema zwei', 'Thema drei'],
         status: 'in-progress',
         locked: true,
       },
       {
         slug: 'project-two',
         index: '02',
-        tag: 'categoria',
-        title: 'Projeto dois',
+        tag: 'kategorie',
+        title: 'Projekt zwei',
         impact: {
-          problem: 'Descreva o problema que este projeto resolve.',
-          result: 'Escreva uma breve descrição do que você construiu e do resultado.',
+          problem: 'Beschreiben Sie das Problem, das dieses Projekt löst.',
+          result: 'Beschreiben Sie kurz, was Sie gebaut haben und das Ergebnis.',
         },
         publishedAt: '2026-03-10',
         repoUrl: projectMedia.two.repoUrl,
         status: 'live',
         coverImage: projectMedia.two.coverImage,
-        coverAlt: 'Ilustração provisória do projeto dois',
+        coverAlt: 'Platzhalterillustration für Projekt zwei',
         hasDetails: true,
       },
       {
         slug: 'project-three',
         index: '03',
-        tag: 'categoria',
-        title: 'Projeto três',
+        tag: 'kategorie',
+        title: 'Projekt drei',
         impact: {
-          problem: 'Descreva o problema que este projeto resolve.',
-          result: 'Escreva uma breve descrição do que você construiu e do resultado.',
+          problem: 'Beschreiben Sie das Problem, das dieses Projekt löst.',
+          result: 'Beschreiben Sie kurz, was Sie gebaut haben und das Ergebnis.',
         },
         publishedAt: '2026-05-22',
         repoUrl: projectMedia.three.repoUrl,
         demoUrl: projectMedia.three.demoUrl,
         status: 'live',
         coverImage: projectMedia.three.coverImage,
-        coverAlt: 'Ilustração provisória do projeto três',
+        coverAlt: 'Platzhalterillustration für Projekt drei',
         coverZoom: true,
         detailImage: projectMedia.three.detailImage,
-        detailImageAlt: 'Captura de tela provisória do projeto três',
+        detailImageAlt: 'Platzhalter-Screenshot von Projekt drei',
         hasDetails: true,
       },
     ],
   },
 }
 
-export const messages: Record<Locale, Messages> = { en, pt }
+export const messages: Record<Locale, Messages> = { en, de }
