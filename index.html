@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio</title>
+    <meta name="description" content="Personal portfolio: projects, skills and experience." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%236d5efc'/><text x='50' y='66' font-size='52' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='white'>P</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      // Apply the saved theme before the page paints to avoid a flash.
+      try {
+        const saved = localStorage.getItem("theme");
+        if (saved) document.documentElement.dataset.theme = saved;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav__inner">
+        <a href="#top" class="nav__logo" id="nav-logo" aria-label="Back to top"></a>
+        <nav class="nav__links" id="nav-links" aria-label="Main">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav__actions">
+          <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle color theme">
+            <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+            <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+          </button>
+          <button class="icon-btn nav__menu" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero container">
+        <div class="hero__text">
+          <p class="hero__badge" id="hero-badge" hidden><span class="dot"></span>Open to opportunities</p>
+          <h1 class="hero__title">Hi, I'm <span class="accent" id="hero-name"></span></h1>
+          <p class="hero__role" id="hero-role"></p>
+          <p class="hero__tagline" id="hero-tagline"></p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#projects">View my work</a>
+            <a class="btn btn--ghost" href="#contact">Get in touch</a>
+          </div>
+          <div class="socials" id="hero-socials"></div>
+        </div>
+        <div class="hero__visual" aria-hidden="true">
+          <div class="avatar" id="hero-avatar"></div>
+          <div class="hero__glow"></div>
+        </div>
+      </section>
+
+      <section class="section container reveal" id="about">
+        <h2 class="section__title"><span class="mono">01.</span> About me</h2>
+        <div class="about">
+          <div class="about__text" id="about-text"></div>
+          <ul class="about__facts" id="about-facts"></ul>
+        </div>
+      </section>
+
+      <section class="section container reveal" id="skills">
+        <h2 class="section__title"><span class="mono">02.</span> Skills</h2>
+        <div class="skills" id="skills-list"></div>
+      </section>
+
+      <section class="section container reveal" id="projects">
+        <h2 class="section__title"><span class="mono">03.</span> Projects</h2>
+        <div class="projects" id="projects-list"></div>
+      </section>
+
+      <section class="section container reveal" id="experience">
+        <h2 class="section__title"><span class="mono">04.</span> Experience &amp; education</h2>
+        <ol class="timeline" id="experience-list"></ol>
+      </section>
+
+      <section class="section container reveal" id="contact">
+        <div class="contact">
+          <p class="mono accent">05. What's next?</p>
+          <h2 class="contact__title">Let's work together</h2>
+          <p class="contact__text">
+            I'm always happy to talk about new projects, opportunities or ideas. Reach out and I'll get back to you.
+          </p>
+          <div class="contact__actions" id="contact-actions"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer container">
+      <p>© <span id="year"></span> <span id="footer-name"></span>. Built with HTML, CSS &amp; JavaScript.</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
