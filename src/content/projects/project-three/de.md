@@ -1,36 +1,36 @@
 ## Überblick
 
-Fassen Sie dieses Projekt in einem Satz zusammen – dieser Satz erscheint links in der Gliederungsvorschau.
+Fasse dieses Projekt in einem Satz zusammen – dieser Satz erscheint links in der Gliederungsvorschau.
 
-Nutzen Sie diesen Platz, um kurz die Geschichte des Projekts zu erzählen. Nennen Sie den Kontext, die Beteiligten und die interessanteste technische Entscheidung, etwa die Entscheidung für `TypeScript` statt für reines JavaScript.
+Nutze diesen Platz, um kurz die Geschichte des Projekts zu erzählen. Nenne den Kontext, die Beteiligten und die interessanteste technische Entscheidung, etwa die Entscheidung für `TypeScript` statt für reines JavaScript.
 
 ## Herausforderung
 
-Beschreiben Sie den schwierigsten Teil des Projekts in einem Satz.
+Beschreibe den schwierigsten Teil des Projekts in einem Satz.
 
 - **Erstes Hindernis:** was die Arbeit schwierig gemacht hat.
-- **Zweites Hindernis:** was Sie dafür neu lernen mussten.
-- **Kompromiss:** worauf Sie bewusst verzichtet haben und warum.
+- **Zweites Hindernis:** was du dafür neu lernen musstest.
+- **Kompromiss:** worauf du bewusst verzichtet hast und warum.
 
 ## Lösung
 
-Erklären Sie in einem Satz, welche Lösung Sie umgesetzt haben.
+Erkläre in einem Satz, welche Lösung du umgesetzt hast.
 
-1. Skizzieren Sie die Architektur in wenigen Worten.
-2. Beschreiben Sie das zentrale Feature.
-3. Beschreiben Sie das Deployment.
+1. Skizziere die Architektur in wenigen Worten.
+2. Beschreibe das zentrale Feature.
+3. Beschreibe das Deployment.
 
-> Fügen Sie ein kurzes Zitat hinzu, zum Beispiel eine Aussage aus dem Team oder von Nutzern über das Projekt.
+> Füge ein kurzes Zitat hinzu, zum Beispiel eine Aussage aus dem Team oder von Nutzern über das Projekt.
 
 ## Ergebnis
 
-Fassen Sie hier das messbare Ergebnis zusammen.
+Fasse hier das messbare Ergebnis zusammen.
 
-Verweisen Sie auf die [Live-Demo](https://example.com) oder auf [Ihr GitHub-Profil](https://github.com/anistomejina).
+Verweise auf die [Live-Demo](https://example.com) oder auf [dein GitHub-Profil](https://github.com/anistomejina).
 
 ## Nächste Schritte
 
-Führen Sie auf, was Sie mit mehr Zeit verbessern würden.
+Führe auf, was du mit mehr Zeit verbessern würdest.
 
 - Verbesserung eins
 - Verbesserung zwei
@@ -38,7 +38,7 @@ Führen Sie auf, was Sie mit mehr Zeit verbessern würden.
 
 ## Lokal ausführen
 
-Erklären Sie, wie sich das Projekt lokal starten lässt.
+Erkläre, wie sich das Projekt lokal starten lässt.
 
 ```bash
 npm install

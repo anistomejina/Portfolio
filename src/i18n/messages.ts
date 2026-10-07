@@ -434,7 +434,7 @@ const de: Messages = {
   profile: {
     cardLabel: 'profil',
     // YOUR CONTENT: the role sentence under your name.
-    roleStart: 'Beschreiben Sie hier Ihre Rolle, mit Fokus auf',
+    roleStart: 'Beschreibe hier deine Rolle, mit Fokus auf',
     focusPrimary: 'Schwerpunkt 1',
     roleConnector: 'und',
     focusSecondary: 'Schwerpunkt 2',
@@ -476,9 +476,9 @@ const de: Messages = {
     items: [
       {
         slug: 'first-post',
-        title: 'Titel Ihres ersten Beitrags',
+        title: 'Titel deines ersten Beitrags',
         excerpt:
-          'Fassen Sie den Beitrag hier kurz zusammen. Der Text erscheint auf der Karte und als Einleitung der Beitragsseite.',
+          'Fasse den Beitrag hier kurz zusammen. Der Text erscheint auf der Karte und als Einleitung der Beitragsseite.',
         category: 'writeup',
         publishedAt: '2026-01-15',
         readingTimeMinutes: 5,
@@ -488,7 +488,7 @@ const de: Messages = {
       {
         slug: 'work-in-progress',
         title: 'Beitrag in Arbeit',
-        excerpt: 'Beschreiben Sie kurz einen Beitrag, an dem Sie noch arbeiten.',
+        excerpt: 'Beschreibe kurz einen Beitrag, an dem du noch arbeitest.',
         category: 'learning',
         hasDetails: true,
         locked: true,
@@ -512,12 +512,12 @@ const de: Messages = {
     entries: [
       {
         slug: 'role-one',
-        role: 'Ihre aktuelle Position',
+        role: 'Deine aktuelle Position',
         period: 'Jan. 2025 – heute · 10 Monate',
         company: 'Name des Unternehmens',
         location: 'Stadt, Land',
         description:
-          'Beschreiben Sie kurz Ihre Aufgaben und was Sie in dieser Position bewirkt haben.',
+          'Beschreibe kurz deine Aufgaben und was du in dieser Position bewirkt hast.',
         skills: ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4', 'Skill 5'],
       },
       {
@@ -526,7 +526,7 @@ const de: Messages = {
         period: 'März 2023 – Dez. 2024 · 1 Jahr, 10 Monate',
         company: 'Weiteres Unternehmen',
         description:
-          'Beschreiben Sie, woran Sie gearbeitet haben, zu welchem Team Sie gehörten und was Sie umgesetzt haben.',
+          'Beschreibe, woran du gearbeitet hast, in welchem Team du warst und was du umgesetzt hast.',
         skills: ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4'],
       },
       {
@@ -534,7 +534,7 @@ const de: Messages = {
         role: 'Erste Position',
         period: 'Juni 2022 – Feb. 2023 · 9 Monate',
         company: 'Erstes Unternehmen',
-        description: 'Beschreiben Sie, was Sie hier gelernt haben und was Sie hauptsächlich entwickelt haben.',
+        description: 'Beschreibe, was du hier gelernt und was du hauptsächlich entwickelt hast.',
         skills: ['Skill 1', 'Skill 2', 'Skill 3'],
       },
     ],
@@ -597,8 +597,8 @@ const de: Messages = {
         tag: 'kategorie',
         title: 'Projekt zwei',
         impact: {
-          problem: 'Beschreiben Sie das Problem, das dieses Projekt löst.',
-          result: 'Beschreiben Sie kurz, was Sie gebaut haben und das Ergebnis.',
+          problem: 'Beschreibe das Problem, das dieses Projekt löst.',
+          result: 'Beschreibe kurz, was du gebaut hast und was dabei herausgekommen ist.',
         },
         publishedAt: '2026-03-10',
         repoUrl: projectMedia.two.repoUrl,
@@ -613,8 +613,8 @@ const de: Messages = {
         tag: 'kategorie',
         title: 'Projekt drei',
         impact: {
-          problem: 'Beschreiben Sie das Problem, das dieses Projekt löst.',
-          result: 'Beschreiben Sie kurz, was Sie gebaut haben und das Ergebnis.',
+          problem: 'Beschreibe das Problem, das dieses Projekt löst.',
+          result: 'Beschreibe kurz, was du gebaut hast und was dabei herausgekommen ist.',
         },
         publishedAt: '2026-05-22',
         repoUrl: projectMedia.three.repoUrl,

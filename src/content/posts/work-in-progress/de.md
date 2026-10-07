@@ -1,6 +1,6 @@
 ## Entwurf
 
-Dieser Beitrag ist noch in Arbeit – ersetzen Sie diesen Text durch Ihren Entwurf, sobald er fertig ist.
+Dieser Beitrag ist noch in Arbeit – ersetze diesen Text durch deinen Entwurf, sobald er fertig ist.
 
 - Die Kernidee skizzieren.
 - Notizen und Quellen sammeln.
@@ -8,4 +8,4 @@ Dieser Beitrag ist noch in Arbeit – ersetzen Sie diesen Text durch Ihren Entwu
 
 ## Nächste Schritte
 
-Sobald der Beitrag fertig ist, entfernen Sie `locked: true` aus seinem Eintrag in `src/i18n/messages.ts`.
+Sobald der Beitrag fertig ist, entferne `locked: true` aus seinem Eintrag in `src/i18n/messages.ts`.
