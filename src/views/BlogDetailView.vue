@@ -81,10 +81,9 @@ const metaParts = computed((): MetaPart[] => {
   return parts
 })
 
-// Follows the post and the language (also on the not-found page); restored when leaving.
-useDocumentTitle(() =>
-  pageTitle(hasPage.value && post.value ? post.value.title : labels.value.notFoundTitle),
-)
+// A post without a body still keeps its own title (only unknown slugs read "not found").
+// Follows the language; restored when leaving.
+useDocumentTitle(() => pageTitle(post.value?.title ?? labels.value.notFoundTitle))
 </script>
 
 <template>
@@ -227,7 +226,6 @@ useDocumentTitle(() =>
   font-size: 15px;
   line-height: 1.8;
   color: var(--text-secondary);
-  overflow-wrap: break-word;
 }
 
 .post-markdown :deep(h1),
@@ -317,7 +315,6 @@ useDocumentTitle(() =>
   background-color: #111813;
   border: 0.5px solid rgb(255 255 255 / 8%);
   border-radius: 14px;
-  overflow-wrap: normal;
 }
 
 .post-markdown :deep(pre code) {

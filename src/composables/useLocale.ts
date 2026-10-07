@@ -32,15 +32,11 @@ function writeStoredLocale(value: Locale): void {
   }
 }
 
-/** First supported language among the browser's preferred languages. */
+/** The browser's primary language (first two letters of navigator.language), when supported. */
 function detectBrowserLocale(): Locale | null {
   if (!isBrowser) return null
-  const preferred = navigator.languages?.length ? navigator.languages : [navigator.language]
-  for (const tag of preferred) {
-    const candidate = tag?.slice(0, 2).toLowerCase()
-    if (isLocale(candidate)) return candidate
-  }
-  return null
+  const candidate = navigator.language?.slice(0, 2).toLowerCase()
+  return isLocale(candidate) ? candidate : null
 }
 
 // App-wide singleton: saved choice -> browser language -> default (en).

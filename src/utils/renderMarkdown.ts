@@ -59,35 +59,25 @@ const defaultTableClose = md.renderer.rules.table_close ?? renderDefault
 md.renderer.rules.table_close = (tokens, idx, options, env, self) =>
   `${defaultTableClose(tokens, idx, options, env, self)}</div>`
 
-/** Plain text of an inline token: link text, image alt text and code spans, without markdown markup. */
-function inlineToPlainText(token: Token | undefined): string {
-  if (!token) return ''
-  const parts: string[] = []
+/**
+ * Outline plain text, taken from an inline token's raw markdown source (not its rendered children):
+ * image syntax -> alt text, link syntax -> link text, then every backtick, *, _ and ~ is deleted
+ * (underscores inside words included) and whitespace is collapsed. Because typographer replacements
+ * only rewrite the children, labels and descriptions keep the author's straight quotes, "--", "..."
+ * and "(c)" as typed, and the ids derived from them stay stable.
+ */
+const OUTLINE_CLEANUP: ReadonlyArray<readonly [RegExp, string]> = [
+  [/!\[([^\]]*)\]\([^)]+\)/g, '$1'],
+  [/\[([^\]]+)\]\([^)]+\)/g, '$1'],
+  [/[`*_~]/g, ''],
+  [/\s+/g, ' '],
+]
 
-  const visit = (children: Token[] | null) => {
-    for (const child of children ?? []) {
-      switch (child.type) {
-        case 'text':
-        case 'code_inline':
-          parts.push(child.content)
-          break
-        case 'image':
-          visit(child.children)
-          break
-        case 'softbreak':
-        case 'hardbreak':
-          parts.push(' ')
-          break
-        default:
-          visit(child.children)
-      }
-    }
-  }
-
-  if (token.children?.length) visit(token.children)
-  else parts.push(token.content)
-
-  return parts.join('').replace(/\s+/g, ' ').trim()
+function inlineSourceText(token: Token | undefined): string {
+  return OUTLINE_CLEANUP.reduce(
+    (text, [pattern, replacement]) => text.replace(pattern, replacement),
+    token?.content ?? '',
+  ).trim()
 }
 
 /** "Introdução ao Projeto!" -> "introducao-ao-projeto" ('' when nothing is left). */
@@ -105,7 +95,7 @@ function firstParagraphAfter(tokens: Token[], start: number): string {
   for (let i = start; i < tokens.length; i += 1) {
     const token = tokens[i]
     if (token.type === 'heading_open') return ''
-    if (token.type === 'paragraph_open') return inlineToPlainText(tokens[i + 1])
+    if (token.type === 'paragraph_open') return inlineSourceText(tokens[i + 1])
   }
   return ''
 }
@@ -129,7 +119,7 @@ export function renderMarkdownDocument(source: string): RenderedMarkdown {
   tokens.forEach((token, index) => {
     if (token.type !== 'heading_open' || token.tag !== 'h2') return
 
-    const label = inlineToPlainText(tokens[index + 1])
+    const label = inlineSourceText(tokens[index + 1])
     const baseId = slugify(label) || 'section'
     const seen = usedIds.get(baseId) ?? 0
     usedIds.set(baseId, seen + 1)

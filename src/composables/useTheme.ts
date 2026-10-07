@@ -4,10 +4,9 @@ import { prefersReducedMotion } from '@/utils/motion'
 
 export type Theme = 'light' | 'dark'
 
-/** localStorage key. Only an explicit toggle is stored; otherwise the OS preference is followed. */
+/** localStorage key. Only an explicit toggle is stored; with nothing saved the site starts light. */
 export const THEME_STORAGE_KEY = 'portfolio-theme'
 
-const DARK_QUERY = '(prefers-color-scheme: dark)'
 const REVEAL_DURATION_MS = 700
 const REVEAL_EASING = 'cubic-bezier(0.76, 0, 0.24, 1)'
 
@@ -35,17 +34,10 @@ function writeStoredTheme(value: Theme): void {
   }
 }
 
-function systemTheme(): Theme {
-  if (!isBrowser || typeof window.matchMedia !== 'function') return 'light'
-  return window.matchMedia(DARK_QUERY).matches ? 'dark' : 'light'
-}
-
-const storedTheme = readStoredTheme()
-let followsSystem = storedTheme === null
 let transitionRunning = false
 
 // App-wide singleton state, initialised once when the module is first imported (before mount).
-const theme = ref<Theme>(storedTheme ?? systemTheme())
+const theme = ref<Theme>(readStoredTheme() ?? 'light')
 
 watch(
   theme,
@@ -55,15 +47,7 @@ watch(
   { immediate: true },
 )
 
-// Keep following the OS setting until the visitor picks a theme explicitly.
-if (isBrowser && typeof window.matchMedia === 'function') {
-  window.matchMedia(DARK_QUERY).addEventListener('change', (event) => {
-    if (followsSystem) theme.value = event.matches ? 'dark' : 'light'
-  })
-}
-
 function commit(value: Theme): void {
-  followsSystem = false
   theme.value = value
   writeStoredTheme(value)
 }

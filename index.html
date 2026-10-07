@@ -15,18 +15,13 @@
     />
 
     <script>
-      // Apply the saved (or system) theme before the first paint to avoid a light flash.
+      // Apply the saved theme before the first paint to avoid a light flash (default: light).
       ;(function () {
         var theme = null
         try {
           theme = localStorage.getItem('portfolio-theme')
         } catch (error) {}
-        if (theme !== 'light' && theme !== 'dark') {
-          theme =
-            window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-              ? 'dark'
-              : 'light'
-        }
+        theme = theme === 'dark' ? 'dark' : 'light'
         document.documentElement.setAttribute('data-theme', theme)
       })()
     </script>

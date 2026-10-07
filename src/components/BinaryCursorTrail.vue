@@ -131,7 +131,7 @@ function spawnGlyph(event: PointerEvent): void {
   if (event.pointerType === 'touch') return
 
   const live = instance
-  if (!live || live.destroyed || !document.hasFocus()) return
+  if (!live || live.destroyed) return
 
   const now = performance.now()
   if (now - lastSpawnAt < SPAWN_INTERVAL_MS) return

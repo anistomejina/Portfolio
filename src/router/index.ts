@@ -9,8 +9,8 @@ const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
   // Back/forward: restore where the visitor was.
   if (savedPosition) return savedPosition
 
-  // /#projects, /blog/slug#section: glide to the target, leaving its scroll-margin-top (or 24px)
-  // above it, so router scrolling, native fragment scrolling and in-page outline clicks agree.
+  // /#projects, /blog/slug#section: glide to the target, always leaving 24px above it
+  // (vue-router scrolls the window itself, so CSS scroll-margin-top is not consulted).
   if (to.hash) {
     let selector = to.hash
     try {
@@ -18,11 +18,9 @@ const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
     } catch {
       // Malformed escape sequence: use the hash as written.
     }
-    const target = document.getElementById(selector.slice(1))
-    const margin = target ? Number.parseFloat(getComputedStyle(target).scrollMarginTop) : Number.NaN
     return {
       el: selector,
-      top: margin > 0 ? margin : HASH_SCROLL_OFFSET,
+      top: HASH_SCROLL_OFFSET,
       behavior: prefersReducedMotion() ? 'auto' : 'smooth',
     }
   }

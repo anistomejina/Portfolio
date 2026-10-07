@@ -86,8 +86,19 @@ function shake(): void {
   }, SHAKE_DURATION_MS)
 }
 
+// Mouse presses shake at once (like a button's :active). Touch and pen wait for the click, so a
+// finger that pans the page across the card (pointercancel, no click) never wobbles it.
+let pressPointerType = ''
+
 function onPointerDown(event: PointerEvent): void {
-  if (isLocked.value && event.button === 0) shake()
+  if (!isLocked.value || event.button !== 0) return
+  pressPointerType = event.pointerType
+  if (event.pointerType === 'mouse') shake()
+}
+
+function onClick(): void {
+  if (isLocked.value && pressPointerType !== '' && pressPointerType !== 'mouse') shake()
+  pressPointerType = ''
 }
 
 function onKeyDown(event: KeyboardEvent): void {
@@ -119,6 +130,7 @@ onBeforeUnmount(() => {
     :tabindex="isLocked ? 0 : undefined"
     :aria-label="lockedName"
     @pointerdown="onPointerDown"
+    @click="onClick"
     @keydown="onKeyDown"
   >
     <span v-if="isLocked" class="archive-lock" aria-hidden="true">
@@ -238,6 +250,12 @@ onBeforeUnmount(() => {
 .archive-card--linked,
 .archive-card--locked {
   cursor: pointer;
+}
+
+/* Like the native button it stands in for: repeated presses never highlight the card's text. */
+.archive-card--locked {
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .archive-card--locked:focus-visible {
