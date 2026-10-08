@@ -252,10 +252,10 @@ const en: Messages = {
   profile: {
     cardLabel: 'profile',
     // YOUR CONTENT: the role sentence under your name.
-    roleStart: 'Write your role here, focused on',
-    focusPrimary: 'focus area 1',
-    roleConnector: 'and',
-    focusSecondary: 'focus area 2',
+    roleStart: 'DevSecOps Engineer and',
+    focusPrimary: 'Security Researcher',
+    roleConnector: 'focused on',
+    focusSecondary: 'offensive security',
     availability: 'available for projects and opportunities',
     // YOUR CONTENT
     stats: [
@@ -504,10 +504,10 @@ const de: Messages = {
   profile: {
     cardLabel: 'profil',
     // YOUR CONTENT: the role sentence under your name.
-    roleStart: 'Beschreibe hier deine Rolle, mit Fokus auf',
-    focusPrimary: 'Schwerpunkt 1',
-    roleConnector: 'und',
-    focusSecondary: 'Schwerpunkt 2',
+    roleStart: 'DevSecOps Engineer und',
+    focusPrimary: 'Security Researcher',
+    roleConnector: 'mit Fokus auf',
+    focusSecondary: 'Offensive Security',
     availability: 'offen für Projekte und neue Herausforderungen',
     // YOUR CONTENT
     stats: [

@@ -6,7 +6,7 @@
  */
 export const site = {
   /** Shown in the home heading, the browser tab title and image alt text. */
-  ownerName: 'Your Name',
+  ownerName: 'Anisto Mejin',
   /** Full profile URL, or '' to hide the GitHub button. */
   githubUrl: 'https://github.com/anistomejina',
   /** Full profile URL (e.g. 'https://www.linkedin.com/in/your-handle'), or '' to hide the button. */
