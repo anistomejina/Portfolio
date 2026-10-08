@@ -127,3 +127,9 @@ export type RenderedMarkdown = {
   html: string
   headings: MarkdownHeading[]
 }
+
+/** A question and answer on the support page. */
+export type FaqItem = {
+  question: string
+  answer: string
+}

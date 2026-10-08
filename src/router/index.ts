@@ -97,6 +97,16 @@ const router = createRouter({
       component: () => import('@/views/BlogDetailView.vue'),
     },
     {
+      path: '/analytics',
+      name: 'analytics',
+      component: () => import('@/views/AnalyticsView.vue'),
+    },
+    {
+      path: '/support',
+      name: 'support',
+      component: () => import('@/views/SupportView.vue'),
+    },
+    {
       // Unknown paths go home.
       path: '/:pathMatch(.*)*',
       redirect: '/',

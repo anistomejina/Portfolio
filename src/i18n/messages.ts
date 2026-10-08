@@ -11,6 +11,7 @@
 import { site } from '@/config/site'
 import type {
   ExperienceEntry,
+  FaqItem,
   Post,
   ProfileStat,
   Project,
@@ -51,7 +52,7 @@ export function isLocale(value: unknown): value is Locale {
 // Navigation
 // ---------------------------------------------------------------------------------------------
 
-export type NavigationKey = 'home' | 'experience' | 'projects' | 'blog'
+export type NavigationKey = 'home' | 'experience' | 'projects' | 'blog' | 'analytics' | 'support'
 
 export type NavigationItem = {
   key: NavigationKey
@@ -64,6 +65,8 @@ export const navigationItems: readonly NavigationItem[] = [
   { key: 'experience', path: '/experience' },
   { key: 'projects', path: '/projects' },
   { key: 'blog', path: '/blog' },
+  { key: 'analytics', path: '/analytics' },
+  { key: 'support', path: '/support' },
 ]
 
 /** In-page anchors on the home view (deep-linkable as /#projects and /#blog). */
@@ -165,6 +168,85 @@ export type Messages = {
     viewAllProjects: string
     items: Project[]
   }
+  analytics: {
+    eyebrow: string
+    pageTitle: string
+    intro: string
+    /** "updated" + relative time, shown under the intro. */
+    updatedLabel: string
+    viewProfile: string
+    loading: string
+    errorTitle: string
+    errorText: string
+    rateLimitText: string
+    retry: string
+    noUsername: string
+    stats: {
+      repos: string
+      stars: string
+      forks: string
+      followers: string
+      accountAge: string
+    }
+    /** Unit words for the account-age tile. */
+    years: string
+    months: string
+    days: string
+    activityTitle: string
+    /** Under the heatmap: what a cell counts. */
+    activityNote: string
+    /** Tooltip / aria text for one heatmap cell: {count} and {date} are replaced. */
+    activityCell: string
+    activityTotal: string
+    less: string
+    more: string
+    languagesTitle: string
+    languagesNote: string
+    otherLanguages: string
+    /** "{n} repos" label next to each language bar. */
+    reposUnit: string
+    repoUnitSingular: string
+    noLanguages: string
+    reposTitle: string
+    noRepos: string
+    updated: string
+    activityFeedTitle: string
+    noActivity: string
+    /** Words for GitHub event types; unknown types fall back to `eventTypes.default`. */
+    eventTypes: Record<string, string>
+    commitsUnit: string
+    commitUnitSingular: string
+  }
+  support: {
+    eyebrow: string
+    pageTitle: string
+    intro: string
+    waysTitle: string
+    starTitle: string
+    starText: string
+    starAction: string
+    sponsorTitle: string
+    sponsorText: string
+    sponsorAction: string
+    coffeeTitle: string
+    coffeeText: string
+    coffeeAction: string
+    shareTitle: string
+    shareText: string
+    shareAction: string
+    shareCopied: string
+    shareFailed: string
+    hireTitle: string
+    hireText: string
+    hireAction: string
+    contactTitle: string
+    contactNote: string
+    contactEmail: string
+    contactLinkedIn: string
+    contactGitHub: string
+    faqTitle: string
+    faq: FaqItem[]
+  }
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -202,6 +284,8 @@ const en: Messages = {
     experience: 'experience',
     projects: 'projects',
     blog: 'blog',
+    analytics: 'analytics',
+    support: 'support',
   },
 
   accessibility: {
@@ -406,6 +490,113 @@ const en: Messages = {
       },
     ],
   },
+
+  analytics: {
+    eyebrow: '~/analytics',
+    pageTitle: 'Analytics',
+    intro: 'Live numbers from my public GitHub profile, refreshed every time you visit.',
+    updatedLabel: 'updated',
+    viewProfile: 'view GitHub profile',
+    loading: 'Loading GitHub data…',
+    errorTitle: 'GitHub data is unavailable right now',
+    errorText: 'The GitHub API could not be reached. Check your connection or try again in a moment.',
+    rateLimitText: 'GitHub limits how often its public API can be called. Please try again in a few minutes.',
+    retry: 'try again',
+    noUsername: 'Add your GitHub URL in src/config/site.ts to show your statistics here.',
+    stats: {
+      repos: 'public repositories',
+      stars: 'stars earned',
+      forks: 'forks',
+      followers: 'followers',
+      accountAge: 'on GitHub',
+    },
+    years: 'y',
+    months: 'mo',
+    days: 'd',
+    activityTitle: 'Activity, last 12 weeks',
+    activityNote: 'Public GitHub events per day: commits pushed, repositories created, issues and pull requests.',
+    activityCell: '{count} on {date}',
+    activityTotal: 'events in 12 weeks',
+    less: 'less',
+    more: 'more',
+    languagesTitle: 'Top languages',
+    languagesNote: 'Main language of each public repository (forks excluded).',
+    otherLanguages: 'other',
+    reposUnit: 'repos',
+    repoUnitSingular: 'repo',
+    noLanguages: 'No language data yet.',
+    reposTitle: 'Recently updated',
+    noRepos: 'No public repositories yet.',
+    updated: 'updated',
+    activityFeedTitle: 'Latest activity',
+    noActivity: 'No public activity in the last 90 days.',
+    eventTypes: {
+      PushEvent: 'pushed to',
+      CreateEvent: 'created',
+      WatchEvent: 'starred',
+      ForkEvent: 'forked',
+      IssuesEvent: 'opened an issue in',
+      IssueCommentEvent: 'commented in',
+      PullRequestEvent: 'opened a pull request in',
+      PullRequestReviewEvent: 'reviewed a pull request in',
+      ReleaseEvent: 'published a release of',
+      PublicEvent: 'made public',
+      default: 'worked on',
+    },
+    commitsUnit: 'commits',
+    commitUnitSingular: 'commit',
+  },
+
+  support: {
+    eyebrow: '~/support',
+    pageTitle: 'Support',
+    // YOUR CONTENT
+    intro: 'If my projects or posts helped you, here are a few ways to support my work. Every bit helps me keep building and writing.',
+    waysTitle: 'Ways to support',
+    starTitle: 'Star a repository',
+    starText: 'Free and takes a second. Stars help other people find the projects.',
+    starAction: 'open GitHub',
+    sponsorTitle: 'Sponsor on GitHub',
+    sponsorText: 'Monthly or one-time sponsorship that goes straight into open-source work.',
+    sponsorAction: 'become a sponsor',
+    coffeeTitle: 'Buy me a coffee',
+    coffeeText: 'A small one-time thank-you that keeps the late-night coding going.',
+    coffeeAction: 'buy a coffee',
+    shareTitle: 'Share this site',
+    shareText: 'Know someone who would find this useful? Send them the link.',
+    shareAction: 'copy link',
+    shareCopied: 'link copied',
+    shareFailed: 'copy failed, use the address bar',
+    hireTitle: 'Work with me',
+    hireText: 'Open to freelance projects, collaborations and full-time roles.',
+    hireAction: 'get in touch',
+    contactTitle: 'Get in touch',
+    // YOUR CONTENT
+    contactNote: 'I usually reply within two working days.',
+    contactEmail: 'Email',
+    contactLinkedIn: 'LinkedIn',
+    contactGitHub: 'GitHub issues',
+    faqTitle: 'Questions',
+    // YOUR CONTENT
+    faq: [
+      {
+        question: 'Can I use code from your projects?',
+        answer: 'Yes, as long as you follow the license in each repository. If a repository has no license, ask me first.',
+      },
+      {
+        question: 'How do I report a bug or suggest a feature?',
+        answer: 'Open an issue in the repository on GitHub. Include the steps to reproduce the problem and what you expected to happen.',
+      },
+      {
+        question: 'Do you take freelance work?',
+        answer: 'Yes. Send me a short description of the project, the timeline and your budget, and I will get back to you.',
+      },
+      {
+        question: 'Where does sponsorship money go?',
+        answer: 'Into hosting, tools and time spent on open-source projects and new posts.',
+      },
+    ],
+  },
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -418,6 +609,8 @@ const de: Messages = {
     experience: 'erfahrung',
     projects: 'projekte',
     blog: 'blog',
+    analytics: 'statistik',
+    support: 'support',
   },
 
   accessibility: {
@@ -626,6 +819,113 @@ const de: Messages = {
         detailImage: projectMedia.three.detailImage,
         detailImageAlt: 'Platzhalter-Screenshot von Projekt drei',
         hasDetails: true,
+      },
+    ],
+  },
+
+  analytics: {
+    eyebrow: '~/statistik',
+    pageTitle: 'Statistik',
+    intro: 'Live-Zahlen aus meinem öffentlichen GitHub-Profil, bei jedem Besuch aktualisiert.',
+    updatedLabel: 'aktualisiert',
+    viewProfile: 'GitHub-Profil ansehen',
+    loading: 'GitHub-Daten werden geladen …',
+    errorTitle: 'GitHub-Daten sind gerade nicht verfügbar',
+    errorText: 'Die GitHub-API ist nicht erreichbar. Prüfe deine Verbindung oder versuche es gleich noch einmal.',
+    rateLimitText: 'GitHub begrenzt, wie oft die öffentliche API abgefragt werden kann. Versuche es in ein paar Minuten noch einmal.',
+    retry: 'erneut versuchen',
+    noUsername: 'Trage deine GitHub-URL in src/config/site.ts ein, um hier deine Statistik zu zeigen.',
+    stats: {
+      repos: 'Repositorys',
+      stars: 'Sterne',
+      forks: 'Forks',
+      followers: 'Follower',
+      accountAge: 'auf GitHub',
+    },
+    years: 'J.',
+    months: 'Mon.',
+    days: 'T.',
+    activityTitle: 'Aktivität, letzte 12 Wochen',
+    activityNote: 'Öffentliche GitHub-Ereignisse pro Tag: gepushte Commits, neue Repositorys, Issues und Pull-Requests.',
+    activityCell: '{count} am {date}',
+    activityTotal: 'Ereignisse in 12 Wochen',
+    less: 'weniger',
+    more: 'mehr',
+    languagesTitle: 'Häufigste Sprachen',
+    languagesNote: 'Hauptsprache jedes öffentlichen Repositorys (ohne Forks).',
+    otherLanguages: 'andere',
+    reposUnit: 'Repos',
+    repoUnitSingular: 'Repo',
+    noLanguages: 'Noch keine Sprachdaten.',
+    reposTitle: 'Zuletzt aktualisiert',
+    noRepos: 'Noch keine öffentlichen Repositorys.',
+    updated: 'aktualisiert',
+    activityFeedTitle: 'Letzte Aktivität',
+    noActivity: 'Keine öffentliche Aktivität in den letzten 90 Tagen.',
+    eventTypes: {
+      PushEvent: 'hat gepusht nach',
+      CreateEvent: 'hat erstellt:',
+      WatchEvent: 'hat einen Stern vergeben an',
+      ForkEvent: 'hat geforkt:',
+      IssuesEvent: 'hat ein Issue eröffnet in',
+      IssueCommentEvent: 'hat kommentiert in',
+      PullRequestEvent: 'hat einen Pull-Request eröffnet in',
+      PullRequestReviewEvent: 'hat einen Pull-Request geprüft in',
+      ReleaseEvent: 'hat ein Release veröffentlicht von',
+      PublicEvent: 'hat veröffentlicht:',
+      default: 'hat gearbeitet an',
+    },
+    commitsUnit: 'Commits',
+    commitUnitSingular: 'Commit',
+  },
+
+  support: {
+    eyebrow: '~/support',
+    pageTitle: 'Support',
+    // YOUR CONTENT
+    intro: 'Wenn dir meine Projekte oder Beiträge geholfen haben, kannst du meine Arbeit auf diese Weise unterstützen. Jede Unterstützung hilft mir, weiter zu entwickeln und zu schreiben.',
+    waysTitle: 'So kannst du helfen',
+    starTitle: 'Ein Repository mit Stern markieren',
+    starText: 'Kostenlos und in einer Sekunde erledigt. Sterne helfen anderen, die Projekte zu finden.',
+    starAction: 'GitHub öffnen',
+    sponsorTitle: 'Auf GitHub sponsern',
+    sponsorText: 'Monatlich oder einmalig – das Geld fließt direkt in Open-Source-Arbeit.',
+    sponsorAction: 'Sponsor werden',
+    coffeeTitle: 'Spendier mir einen Kaffee',
+    coffeeText: 'Ein kleines einmaliges Dankeschön, das die Coding-Nächte am Laufen hält.',
+    coffeeAction: 'Kaffee spendieren',
+    shareTitle: 'Seite teilen',
+    shareText: 'Kennst du jemanden, dem das hier helfen könnte? Schick den Link weiter.',
+    shareAction: 'Link kopieren',
+    shareCopied: 'Link kopiert',
+    shareFailed: 'Kopieren fehlgeschlagen, nutze die Adresszeile',
+    hireTitle: 'Zusammenarbeiten',
+    hireText: 'Offen für Freelance-Projekte, Kooperationen und Festanstellungen.',
+    hireAction: 'Kontakt aufnehmen',
+    contactTitle: 'Kontakt',
+    // YOUR CONTENT
+    contactNote: 'Ich antworte meistens innerhalb von zwei Werktagen.',
+    contactEmail: 'E-Mail',
+    contactLinkedIn: 'LinkedIn',
+    contactGitHub: 'GitHub-Issues',
+    faqTitle: 'Fragen',
+    // YOUR CONTENT
+    faq: [
+      {
+        question: 'Darf ich Code aus deinen Projekten verwenden?',
+        answer: 'Ja, solange du dich an die Lizenz im jeweiligen Repository hältst. Hat ein Repository keine Lizenz, frag mich bitte vorher.',
+      },
+      {
+        question: 'Wie melde ich einen Fehler oder schlage ein Feature vor?',
+        answer: 'Eröffne ein Issue im Repository auf GitHub. Beschreibe, wie sich der Fehler nachstellen lässt und was du erwartet hast.',
+      },
+      {
+        question: 'Übernimmst du Freelance-Aufträge?',
+        answer: 'Ja. Schick mir eine kurze Beschreibung des Projekts, den Zeitrahmen und dein Budget, dann melde ich mich bei dir.',
+      },
+      {
+        question: 'Wofür wird das Sponsoring-Geld verwendet?',
+        answer: 'Für Hosting, Tools und die Zeit, die in Open-Source-Projekte und neue Beiträge fließt.',
       },
     ],
   },

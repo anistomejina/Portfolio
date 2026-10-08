@@ -19,7 +19,15 @@ export const site = {
   resumeDownloadName: 'resume.pdf',
   /** Profile picture inside public/. */
   profilePhoto: 'images/profile-placeholder.svg',
+  /** GitHub Sponsors page (e.g. 'https://github.com/sponsors/your-handle'), or '' to hide the card. */
+  sponsorUrl: '',
+  /** Buy Me a Coffee / Ko-fi page, or '' to hide the card. */
+  coffeeUrl: '',
 } as const
+
+/** GitHub username taken from githubUrl ('' when no GitHub URL is set). Feeds the analytics page. */
+export const githubUsername: string =
+  site.githubUrl.match(/github\.com\/([^/?#]+)/i)?.[1] ?? ''
 
 /** Browser-tab title for a detail page: "<title> — <owner name>". */
 export function pageTitle(title: string): string {
