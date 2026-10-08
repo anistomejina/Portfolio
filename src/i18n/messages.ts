@@ -168,7 +168,6 @@ export type Messages = {
     items: Project[]
   }
   analytics: {
-    pageTitle: string
     viewProfile: string
   }
   support: {
@@ -443,7 +442,6 @@ const en: Messages = {
   },
 
   analytics: {
-    pageTitle: 'Analytics',
     viewProfile: 'view my GitHub profile',
   },
 
@@ -703,7 +701,6 @@ const de: Messages = {
   },
 
   analytics: {
-    pageTitle: 'Statistik',
     viewProfile: 'mein GitHub-Profil ansehen',
   },
 

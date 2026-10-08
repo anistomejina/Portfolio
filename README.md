@@ -46,7 +46,7 @@ The file has one block per language: `en` (English) and `de` (Deutsch). Both blo
   - `topics` shows topic pills instead of the problem/result text.
 - **Blog posts:** `posts.items`. The home page shows the first two. Flags: `hasDetails`, `featured`, `locked`, `placeholder`.
 - **Experience:** `experience.entries` (newest first) and `experience.toolbox` (the skills grid).
-- **Support page:** `support` (and `analytics`, the link to your GitHub profile at the bottom). The support intro and reply-time note are marked "YOUR CONTENT".
+- **Support page:** `support` (and `analytics.viewProfile`, the GitHub profile link at the bottom). The support intro and reply-time note are marked "YOUR CONTENT".
 
 Keep the same `slug` for an item in both languages so that switching language on a detail page keeps working. Lines marked "YOUR CONTENT" hold placeholder text you should replace.
 

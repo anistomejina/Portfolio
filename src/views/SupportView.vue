@@ -216,15 +216,12 @@ function isExternal(href: string): boolean {
       </ul>
     </section>
 
-    <section v-if="site.githubUrl" id="analytics" class="block" aria-labelledby="analytics-title">
-      <header class="block-head">
-        <h2 id="analytics-title" class="block-title">{{ copy.analytics.pageTitle }}</h2>
-      </header>
+    <p v-if="site.githubUrl" id="analytics" class="block">
       <a :href="site.githubUrl" class="profile-link" target="_blank" rel="noopener noreferrer">
         {{ copy.analytics.viewProfile }}
         <PhArrowUpRight :size="12" aria-hidden="true" />
       </a>
-    </section>
+    </p>
   </main>
 </template>
 
