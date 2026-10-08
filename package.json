@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "encode-email": "node scripts/encode-email.mjs"
   },
   "dependencies": {
     "@iconoir/vue": "^7.12.1",

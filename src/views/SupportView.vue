@@ -8,17 +8,30 @@ import {
   PhLinkSimple,
   PhStar,
 } from '@phosphor-icons/vue'
-import { computed, onBeforeUnmount, ref, type Component } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, type Component } from 'vue'
 
 import ScrambleName from '@/components/ScrambleName.vue'
 import { useLocale } from '@/composables/useLocale'
 import { site } from '@/config/site'
+import { armMailto, EMAIL_LINK, hasEmail, isEmailPlaceholder, revealEmail } from '@/utils/email'
 import { hasHref } from '@/utils/links'
 
 const { copy } = useLocale()
 const t = computed(() => copy.value.support)
 
-const email = site.email ? `mailto:${site.email}` : ''
+const email = hasEmail ? EMAIL_LINK : ''
+
+/** The visible address is filled in after mount, so it is not in the initial HTML. */
+const emailText = ref('')
+onMounted(() => (emailText.value = revealEmail()))
+
+/** Arms an email link before it can be followed (see utils/email). */
+const mailtoHandlers = {
+  pointerenter: armMailto,
+  pointerdown: armMailto,
+  touchstart: armMailto,
+  focus: armMailto,
+}
 const issuesUrl = site.githubUrl
 
 /** Where "work with me" points: email first, then LinkedIn, then GitHub. */
@@ -113,7 +126,7 @@ const ways = computed<Way[]>(() =>
 
 const contacts = computed(() =>
   [
-    { key: 'email', label: t.value.contactEmail, value: site.email, href: email },
+    { key: 'email', label: t.value.contactEmail, value: emailText.value, href: email },
     {
       key: 'linkedin',
       label: t.value.contactLinkedIn,
@@ -180,6 +193,7 @@ function toggleFaq(index: number): void {
             class="way-action"
             :target="isExternal(way.href) ? '_blank' : undefined"
             :rel="isExternal(way.href) ? 'noopener noreferrer' : undefined"
+            v-on="isEmailPlaceholder(way.href) ? mailtoHandlers : {}"
           >
             {{ way.action }}
             <PhArrowUpRight :size="12" aria-hidden="true" />
@@ -201,6 +215,7 @@ function toggleFaq(index: number): void {
             class="contact"
             :target="isExternal(contact.href) ? '_blank' : undefined"
             :rel="isExternal(contact.href) ? 'noopener noreferrer' : undefined"
+            v-on="isEmailPlaceholder(contact.href) ? mailtoHandlers : {}"
           >
             <span class="contact-label">{{ contact.label }}</span>
             <span class="contact-value">{{ contact.value }}</span>

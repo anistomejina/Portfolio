@@ -19,6 +19,7 @@ import type {
   ToolboxColumn,
 } from '@/types/content'
 import { asset } from '@/utils/assets'
+import { EMAIL_LINK, hasEmail } from '@/utils/email'
 
 // ---------------------------------------------------------------------------------------------
 // Locales
@@ -256,7 +257,7 @@ export type Messages = {
 const links = {
   github: site.githubUrl,
   linkedin: site.linkedinUrl,
-  email: site.email ? `mailto:${site.email}` : '',
+  email: hasEmail ? EMAIL_LINK : '',
   resume: site.resumeFile ? asset(site.resumeFile) : '',
 }
 

@@ -10,9 +10,12 @@ export const site = {
   /** Full profile URL, or '' to hide the GitHub button. */
   githubUrl: 'https://github.com/anistomejina',
   /** Full profile URL (e.g. 'https://www.linkedin.com/in/your-handle'), or '' to hide the button. */
-  linkedinUrl: '',
-  /** Plain address (e.g. 'you@example.com'), or '' to hide the email button. */
-  email: '',
+  linkedinUrl: 'https://www.linkedin.com/in/anisto-mejin7/',
+  /**
+   * Your email address, encoded so spam bots scanning the site cannot read it, or '' to hide every
+   * email link. To change it, run:  npm run encode-email -- you@example.com  and paste the output.
+   */
+  emailEncoded: 'bW9jLmxpYW1nQG5pamVtb3RzaW5hLmE=',
   /** Resume file inside public/ (e.g. 'resume.pdf'), or '' to hide the download button. */
   resumeFile: '',
   /** Suggested file name when the resume is downloaded. */

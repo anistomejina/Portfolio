@@ -9,6 +9,7 @@ import { useLocale } from '@/composables/useLocale'
 import { site } from '@/config/site'
 import { techStack } from '@/i18n/messages'
 import type { SocialLink } from '@/types/content'
+import { armMailto, isEmailPlaceholder } from '@/utils/email'
 import { hasHref, isExternalUrl, visibleLinks } from '@/utils/links'
 
 const { copy } = useLocale()
@@ -39,6 +40,14 @@ const heroLinks = computed<HeroLink[]>(() =>
     }
   }),
 )
+
+/** Arms an email link before it can be followed (see utils/email). */
+const mailtoHandlers = {
+  pointerenter: armMailto,
+  pointerdown: armMailto,
+  touchstart: armMailto,
+  focus: armMailto,
+}
 
 type RolePart = { text: string; strong: boolean }
 
@@ -91,6 +100,7 @@ const roleParts = computed<RolePart[]>(() => {
         :download="link.download || undefined"
         :target="link.target"
         :rel="link.rel"
+        v-on="isEmailPlaceholder(link.href) ? mailtoHandlers : {}"
       >
         <PhGithubLogo
           v-if="link.brand === 'github'"

@@ -25,7 +25,7 @@ Everything you see on the site comes from a few places.
 | --- | --- |
 | `ownerName` | Your name: the home heading, the browser tab title and the photo alt text. |
 | `githubUrl`, `linkedinUrl` | Profile URLs. Leave one empty (`''`) to hide its button. |
-| `email` | Your address, for example `you@example.com`. Leave it empty to hide the email button. |
+| `emailEncoded` | Your email address, encoded so spam bots can't read it. Run `npm run encode-email -- you@example.com` and paste the output here. Leave it empty to hide every email link. |
 | `resumeFile` | A PDF inside `public/`, for example `resume.pdf`. Leave it empty to hide the download button. |
 | `profilePhoto` | Your photo inside `public/`. Any square image works. |
 | `sponsorUrl` | Your GitHub Sponsors page. Leave it empty to hide the sponsor card on the support page. |
