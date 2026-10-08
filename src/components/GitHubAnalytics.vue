@@ -2,7 +2,6 @@
 import { PhArrowUpRight, PhGitFork, PhStar } from '@phosphor-icons/vue'
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
-import ScrambleName from '@/components/ScrambleName.vue'
 import { useLocale } from '@/composables/useLocale'
 import { githubUsername } from '@/config/site'
 import { formatShortDate } from '@/utils/formatDate'
@@ -190,11 +189,10 @@ watch(locale, () => (tooltip.value = null))
 </script>
 
 <template>
-  <main class="analytics-page">
-    <p class="eyebrow">{{ t.eyebrow }}</p>
-    <div class="page-title">
-      <ScrambleName :key="t.pageTitle" :text="t.pageTitle" />
-    </div>
+  <section id="analytics" class="analytics" aria-labelledby="analytics-heading">
+    <header class="section-head">
+      <h2 id="analytics-heading" class="section-title">{{ t.pageTitle }}</h2>
+    </header>
 
     <div class="intro-row">
       <p class="intro">{{ t.intro }}</p>
@@ -338,20 +336,29 @@ watch(locale, () => (tooltip.value = null))
         <p v-else class="empty">{{ t.noRepos }}</p>
       </section>
     </template>
-  </main>
+  </section>
 </template>
 
 <style scoped>
-.eyebrow {
-  margin-bottom: 20px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--signal-text);
+.analytics {
+  margin-top: clamp(40px, 6vw, 56px);
+  scroll-margin-top: 24px;
 }
 
-.page-title {
-  margin-bottom: 20px;
+/* Same section heading as the support page blocks. */
+.section-head {
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 0.5px solid var(--border-strong);
+}
+
+.section-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
 }
 
 .intro-row {
@@ -365,7 +372,7 @@ watch(locale, () => (tooltip.value = null))
 .intro {
   max-width: 620px;
   color: var(--text-secondary);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.6;
 }
 

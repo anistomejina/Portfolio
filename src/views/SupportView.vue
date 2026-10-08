@@ -2,7 +2,6 @@
 import {
   PhArrowUpRight,
   PhBriefcase,
-  PhCaretDown,
   PhCoffee,
   PhHeart,
   PhLinkSimple,
@@ -10,6 +9,7 @@ import {
 } from '@phosphor-icons/vue'
 import { computed, onBeforeUnmount, onMounted, ref, type Component } from 'vue'
 
+import GitHubAnalytics from '@/components/GitHubAnalytics.vue'
 import ScrambleName from '@/components/ScrambleName.vue'
 import { useLocale } from '@/composables/useLocale'
 import { site } from '@/config/site'
@@ -145,14 +145,6 @@ const contacts = computed(() =>
 function isExternal(href: string): boolean {
   return /^https?:\/\//.test(href)
 }
-
-// ----- FAQ: single-open accordion, like the experience page -----------------------------------
-
-const openFaq = ref<number | null>(null)
-
-function toggleFaq(index: number): void {
-  openFaq.value = openFaq.value === index ? null : index
-}
 </script>
 
 <template>
@@ -225,38 +217,7 @@ function toggleFaq(index: number): void {
       </ul>
     </section>
 
-    <section v-if="t.faq.length" class="block" aria-labelledby="faq-title">
-      <header class="block-head">
-        <h2 id="faq-title" class="block-title">{{ t.faqTitle }}</h2>
-      </header>
-
-      <div class="faq">
-        <article v-for="(item, index) in t.faq" :key="index" class="faq-item" :class="{ 'faq-item--open': openFaq === index }">
-          <button
-            :id="`faq-trigger-${index}`"
-            type="button"
-            class="faq-head"
-            :aria-expanded="openFaq === index"
-            :aria-controls="`faq-panel-${index}`"
-            @click="toggleFaq(index)"
-          >
-            <span class="faq-question">{{ item.question }}</span>
-            <PhCaretDown class="faq-sign" :size="16" aria-hidden="true" />
-          </button>
-          <div
-            :id="`faq-panel-${index}`"
-            class="faq-body"
-            role="region"
-            :aria-labelledby="`faq-trigger-${index}`"
-            :aria-hidden="openFaq !== index"
-          >
-            <div class="faq-body-inner">
-              <p class="faq-answer">{{ item.answer }}</p>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
+    <GitHubAnalytics />
   </main>
 </template>
 
@@ -406,8 +367,7 @@ function toggleFaq(index: number): void {
 }
 
 .way-action:focus-visible,
-.contact:focus-visible,
-.faq-head:focus-visible {
+.contact:focus-visible {
   outline: 2px solid var(--signal);
   outline-offset: 3px;
 }
@@ -458,71 +418,6 @@ function toggleFaq(index: number): void {
   transform: translate(2px, -2px);
 }
 
-/* ----- FAQ accordion ----- */
-.faq-item {
-  border-bottom: 0.5px solid var(--border);
-}
-
-.faq-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  width: 100%;
-  padding: 18px 0;
-  font: inherit;
-  text-align: left;
-  color: var(--ink);
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-}
-
-.faq-question {
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.faq-sign {
-  flex-shrink: 0;
-  color: var(--text-muted);
-  transition: transform 0.25s ease, color 0.2s ease;
-}
-
-.faq-head:hover .faq-sign,
-.faq-item--open .faq-sign {
-  color: var(--signal-text);
-}
-
-.faq-item--open .faq-sign {
-  transform: rotate(180deg);
-}
-
-.faq-body {
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows 0.28s ease, visibility 0s linear 0.28s;
-}
-
-.faq-item--open .faq-body {
-  grid-template-rows: 1fr;
-  visibility: visible;
-  transition: grid-template-rows 0.28s ease, visibility 0s;
-}
-
-.faq-body-inner {
-  overflow: hidden;
-}
-
-.faq-answer {
-  max-width: 680px;
-  padding-bottom: 20px;
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--text-secondary);
-}
-
 @media (max-width: 640px) {
   .contact {
     grid-template-columns: minmax(0, 1fr) auto;
@@ -537,10 +432,7 @@ function toggleFaq(index: number): void {
 @media (prefers-reduced-motion: reduce) {
   .way,
   .way-action,
-  .contact-arrow,
-  .faq-sign,
-  .faq-body,
-  .faq-item--open .faq-body {
+  .contact-arrow {
     transition: none;
   }
 

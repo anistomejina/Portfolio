@@ -1,6 +1,6 @@
 # Portfolio
 
-A personal portfolio built with Vue 3, Vite and TypeScript. It has a home page, an experience page, a project archive with case-study pages, a blog, a live GitHub analytics page and a support page. Every page is available in English and German, with light and dark themes.
+A personal portfolio built with Vue 3, Vite and TypeScript. It has a home page, an experience page, a project archive with case-study pages, a blog and a support page with live GitHub analytics. Every page is available in English and German, with light and dark themes.
 
 Live site: `https://anistomejina.github.io/Portfolio/` (after the first deploy).
 
@@ -31,7 +31,7 @@ Everything you see on the site comes from a few places.
 | `sponsorUrl` | Your GitHub Sponsors page. Leave it empty to hide the sponsor card on the support page. |
 | `coffeeUrl` | Your Buy Me a Coffee or Ko-fi page. Leave it empty to hide the coffee card. |
 
-The analytics page reads your GitHub username from `githubUrl` and loads your public stats (repositories, stars, languages, activity) live from the GitHub API in the visitor's browser. No key is needed; results are cached for 15 minutes per visitor.
+The analytics section at the bottom of the support page reads your GitHub username from `githubUrl` and loads your public stats (repositories, stars, languages, activity) live from the GitHub API in the visitor's browser. No key is needed; results are cached for 15 minutes per visitor.
 
 Also update the `<title>` and `<meta name="description">` in `index.html`, and the letter in `public/favicon.svg`.
 
@@ -47,7 +47,7 @@ The file has one block per language: `en` (English) and `de` (Deutsch). Both blo
   - `topics` shows topic pills instead of the problem/result text.
 - **Blog posts:** `posts.items`. The home page shows the first two. Flags: `hasDetails`, `featured`, `locked`, `placeholder`.
 - **Experience:** `experience.entries` (newest first) and `experience.toolbox` (the skills grid).
-- **Analytics and support pages:** `analytics` and `support`. The support intro, reply-time note and FAQ (`support.faq`) are marked "YOUR CONTENT".
+- **Support page and its analytics section:** `support` and `analytics`. The support intro and reply-time note are marked "YOUR CONTENT".
 
 Keep the same `slug` for an item in both languages so that switching language on a detail page keeps working. Lines marked "YOUR CONTENT" hold placeholder text you should replace.
 

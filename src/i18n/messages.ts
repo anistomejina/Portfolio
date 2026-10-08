@@ -11,7 +11,6 @@
 import { site } from '@/config/site'
 import type {
   ExperienceEntry,
-  FaqItem,
   Post,
   ProfileStat,
   Project,
@@ -53,7 +52,7 @@ export function isLocale(value: unknown): value is Locale {
 // Navigation
 // ---------------------------------------------------------------------------------------------
 
-export type NavigationKey = 'home' | 'experience' | 'projects' | 'blog' | 'analytics' | 'support'
+export type NavigationKey = 'home' | 'experience' | 'projects' | 'blog' | 'support'
 
 export type NavigationItem = {
   key: NavigationKey
@@ -66,7 +65,6 @@ export const navigationItems: readonly NavigationItem[] = [
   { key: 'experience', path: '/experience' },
   { key: 'projects', path: '/projects' },
   { key: 'blog', path: '/blog' },
-  { key: 'analytics', path: '/analytics' },
   { key: 'support', path: '/support' },
 ]
 
@@ -170,7 +168,6 @@ export type Messages = {
     items: Project[]
   }
   analytics: {
-    eyebrow: string
     pageTitle: string
     intro: string
     /** "updated" + relative time, shown under the intro. */
@@ -245,8 +242,6 @@ export type Messages = {
     contactEmail: string
     contactLinkedIn: string
     contactGitHub: string
-    faqTitle: string
-    faq: FaqItem[]
   }
 }
 
@@ -285,7 +280,6 @@ const en: Messages = {
     experience: 'experience',
     projects: 'projects',
     blog: 'blog',
-    analytics: 'analytics',
     support: 'support',
   },
 
@@ -493,7 +487,6 @@ const en: Messages = {
   },
 
   analytics: {
-    eyebrow: '~/analytics',
     pageTitle: 'Analytics',
     intro: 'Live numbers from my public GitHub profile, refreshed every time you visit.',
     updatedLabel: 'updated',
@@ -577,26 +570,6 @@ const en: Messages = {
     contactEmail: 'Email',
     contactLinkedIn: 'LinkedIn',
     contactGitHub: 'GitHub issues',
-    faqTitle: 'Questions',
-    // YOUR CONTENT
-    faq: [
-      {
-        question: 'Can I use code from your projects?',
-        answer: 'Yes, as long as you follow the license in each repository. If a repository has no license, ask me first.',
-      },
-      {
-        question: 'How do I report a bug or suggest a feature?',
-        answer: 'Open an issue in the repository on GitHub. Include the steps to reproduce the problem and what you expected to happen.',
-      },
-      {
-        question: 'Do you take freelance work?',
-        answer: 'Yes. Send me a short description of the project, the timeline and your budget, and I will get back to you.',
-      },
-      {
-        question: 'Where does sponsorship money go?',
-        answer: 'Into hosting, tools and time spent on open-source projects and new posts.',
-      },
-    ],
   },
 }
 
@@ -610,7 +583,6 @@ const de: Messages = {
     experience: 'erfahrung',
     projects: 'projekte',
     blog: 'blog',
-    analytics: 'statistik',
     support: 'support',
   },
 
@@ -825,7 +797,6 @@ const de: Messages = {
   },
 
   analytics: {
-    eyebrow: '~/statistik',
     pageTitle: 'Statistik',
     intro: 'Live-Zahlen aus meinem öffentlichen GitHub-Profil, bei jedem Besuch aktualisiert.',
     updatedLabel: 'aktualisiert',
@@ -909,26 +880,6 @@ const de: Messages = {
     contactEmail: 'E-Mail',
     contactLinkedIn: 'LinkedIn',
     contactGitHub: 'GitHub-Issues',
-    faqTitle: 'Fragen',
-    // YOUR CONTENT
-    faq: [
-      {
-        question: 'Darf ich Code aus deinen Projekten verwenden?',
-        answer: 'Ja, solange du dich an die Lizenz im jeweiligen Repository hältst. Hat ein Repository keine Lizenz, frag mich bitte vorher.',
-      },
-      {
-        question: 'Wie melde ich einen Fehler oder schlage ein Feature vor?',
-        answer: 'Eröffne ein Issue im Repository auf GitHub. Beschreibe, wie sich der Fehler nachstellen lässt und was du erwartet hast.',
-      },
-      {
-        question: 'Übernimmst du Freelance-Aufträge?',
-        answer: 'Ja. Schick mir eine kurze Beschreibung des Projekts, den Zeitrahmen und dein Budget, dann melde ich mich bei dir.',
-      },
-      {
-        question: 'Wofür wird das Sponsoring-Geld verwendet?',
-        answer: 'Für Hosting, Tools und die Zeit, die in Open-Source-Projekte und neue Beiträge fließt.',
-      },
-    ],
   },
 }
 

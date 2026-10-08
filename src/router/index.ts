@@ -97,9 +97,9 @@ const router = createRouter({
       component: () => import('@/views/BlogDetailView.vue'),
     },
     {
+      // Analytics now lives at the bottom of the support page.
       path: '/analytics',
-      name: 'analytics',
-      component: () => import('@/views/AnalyticsView.vue'),
+      redirect: { path: '/support', hash: '#analytics' },
     },
     {
       path: '/support',
