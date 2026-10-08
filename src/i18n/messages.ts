@@ -169,51 +169,7 @@ export type Messages = {
   }
   analytics: {
     pageTitle: string
-    intro: string
-    /** "updated" + relative time, shown under the intro. */
-    updatedLabel: string
     viewProfile: string
-    loading: string
-    errorTitle: string
-    errorText: string
-    rateLimitText: string
-    retry: string
-    noUsername: string
-    stats: {
-      repos: string
-      stars: string
-      forks: string
-      followers: string
-      accountAge: string
-    }
-    /** Unit words for the account-age tile. */
-    years: string
-    months: string
-    days: string
-    activityTitle: string
-    /** Under the heatmap: what a cell counts. */
-    activityNote: string
-    /** Tooltip / aria text for one heatmap cell: {count} and {date} are replaced. */
-    activityCell: string
-    activityTotal: string
-    less: string
-    more: string
-    languagesTitle: string
-    languagesNote: string
-    otherLanguages: string
-    /** "{n} repos" label next to each language bar. */
-    reposUnit: string
-    repoUnitSingular: string
-    noLanguages: string
-    reposTitle: string
-    noRepos: string
-    updated: string
-    activityFeedTitle: string
-    noActivity: string
-    /** Words for GitHub event types; unknown types fall back to `eventTypes.default`. */
-    eventTypes: Record<string, string>
-    commitsUnit: string
-    commitUnitSingular: string
   }
   support: {
     eyebrow: string
@@ -488,57 +444,7 @@ const en: Messages = {
 
   analytics: {
     pageTitle: 'Analytics',
-    intro: 'Live numbers from my public GitHub profile, refreshed every time you visit.',
-    updatedLabel: 'updated',
-    viewProfile: 'view GitHub profile',
-    loading: 'Loading GitHub data…',
-    errorTitle: 'GitHub data is unavailable right now',
-    errorText: 'The GitHub API could not be reached. Check your connection or try again in a moment.',
-    rateLimitText: 'GitHub limits how often its public API can be called. Please try again in a few minutes.',
-    retry: 'try again',
-    noUsername: 'Add your GitHub URL in src/config/site.ts to show your statistics here.',
-    stats: {
-      repos: 'public repositories',
-      stars: 'stars earned',
-      forks: 'forks',
-      followers: 'followers',
-      accountAge: 'on GitHub',
-    },
-    years: 'y',
-    months: 'mo',
-    days: 'd',
-    activityTitle: 'Activity, last 12 weeks',
-    activityNote: 'Public GitHub events per day: commits pushed, repositories created, issues and pull requests.',
-    activityCell: '{count} on {date}',
-    activityTotal: 'events in 12 weeks',
-    less: 'less',
-    more: 'more',
-    languagesTitle: 'Top languages',
-    languagesNote: 'Main language of each public repository (forks excluded).',
-    otherLanguages: 'other',
-    reposUnit: 'repos',
-    repoUnitSingular: 'repo',
-    noLanguages: 'No language data yet.',
-    reposTitle: 'Recently updated',
-    noRepos: 'No public repositories yet.',
-    updated: 'updated',
-    activityFeedTitle: 'Latest activity',
-    noActivity: 'No public activity in the last 90 days.',
-    eventTypes: {
-      PushEvent: 'pushed to',
-      CreateEvent: 'created',
-      WatchEvent: 'starred',
-      ForkEvent: 'forked',
-      IssuesEvent: 'opened an issue in',
-      IssueCommentEvent: 'commented in',
-      PullRequestEvent: 'opened a pull request in',
-      PullRequestReviewEvent: 'reviewed a pull request in',
-      ReleaseEvent: 'published a release of',
-      PublicEvent: 'made public',
-      default: 'worked on',
-    },
-    commitsUnit: 'commits',
-    commitUnitSingular: 'commit',
+    viewProfile: 'view my GitHub profile',
   },
 
   support: {
@@ -798,57 +704,7 @@ const de: Messages = {
 
   analytics: {
     pageTitle: 'Statistik',
-    intro: 'Live-Zahlen aus meinem öffentlichen GitHub-Profil, bei jedem Besuch aktualisiert.',
-    updatedLabel: 'aktualisiert',
-    viewProfile: 'GitHub-Profil ansehen',
-    loading: 'GitHub-Daten werden geladen …',
-    errorTitle: 'GitHub-Daten sind gerade nicht verfügbar',
-    errorText: 'Die GitHub-API ist nicht erreichbar. Prüfe deine Verbindung oder versuche es gleich noch einmal.',
-    rateLimitText: 'GitHub begrenzt, wie oft die öffentliche API abgefragt werden kann. Versuche es in ein paar Minuten noch einmal.',
-    retry: 'erneut versuchen',
-    noUsername: 'Trage deine GitHub-URL in src/config/site.ts ein, um hier deine Statistik zu zeigen.',
-    stats: {
-      repos: 'Repositorys',
-      stars: 'Sterne',
-      forks: 'Forks',
-      followers: 'Follower',
-      accountAge: 'auf GitHub',
-    },
-    years: 'J.',
-    months: 'Mon.',
-    days: 'T.',
-    activityTitle: 'Aktivität, letzte 12 Wochen',
-    activityNote: 'Öffentliche GitHub-Ereignisse pro Tag: gepushte Commits, neue Repositorys, Issues und Pull-Requests.',
-    activityCell: '{count} am {date}',
-    activityTotal: 'Ereignisse in 12 Wochen',
-    less: 'weniger',
-    more: 'mehr',
-    languagesTitle: 'Häufigste Sprachen',
-    languagesNote: 'Hauptsprache jedes öffentlichen Repositorys (ohne Forks).',
-    otherLanguages: 'andere',
-    reposUnit: 'Repos',
-    repoUnitSingular: 'Repo',
-    noLanguages: 'Noch keine Sprachdaten.',
-    reposTitle: 'Zuletzt aktualisiert',
-    noRepos: 'Noch keine öffentlichen Repositorys.',
-    updated: 'aktualisiert',
-    activityFeedTitle: 'Letzte Aktivität',
-    noActivity: 'Keine öffentliche Aktivität in den letzten 90 Tagen.',
-    eventTypes: {
-      PushEvent: 'hat gepusht nach',
-      CreateEvent: 'hat erstellt:',
-      WatchEvent: 'hat einen Stern vergeben an',
-      ForkEvent: 'hat geforkt:',
-      IssuesEvent: 'hat ein Issue eröffnet in',
-      IssueCommentEvent: 'hat kommentiert in',
-      PullRequestEvent: 'hat einen Pull-Request eröffnet in',
-      PullRequestReviewEvent: 'hat einen Pull-Request geprüft in',
-      ReleaseEvent: 'hat ein Release veröffentlicht von',
-      PublicEvent: 'hat veröffentlicht:',
-      default: 'hat gearbeitet an',
-    },
-    commitsUnit: 'Commits',
-    commitUnitSingular: 'Commit',
+    viewProfile: 'mein GitHub-Profil ansehen',
   },
 
   support: {

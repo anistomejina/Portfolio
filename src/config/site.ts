@@ -28,9 +28,6 @@ export const site = {
   coffeeUrl: '',
 } as const
 
-/** GitHub username taken from githubUrl ('' when no GitHub URL is set). Feeds the analytics page. */
-export const githubUsername: string =
-  site.githubUrl.match(/github\.com\/([^/?#]+)/i)?.[1] ?? ''
 
 /** Browser-tab title for a detail page: "<title> — <owner name>". */
 export function pageTitle(title: string): string {

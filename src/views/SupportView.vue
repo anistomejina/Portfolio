@@ -9,7 +9,6 @@ import {
 } from '@phosphor-icons/vue'
 import { computed, onBeforeUnmount, onMounted, ref, type Component } from 'vue'
 
-import GitHubAnalytics from '@/components/GitHubAnalytics.vue'
 import ScrambleName from '@/components/ScrambleName.vue'
 import { useLocale } from '@/composables/useLocale'
 import { site } from '@/config/site'
@@ -217,7 +216,15 @@ function isExternal(href: string): boolean {
       </ul>
     </section>
 
-    <GitHubAnalytics />
+    <section v-if="site.githubUrl" id="analytics" class="block" aria-labelledby="analytics-title">
+      <header class="block-head">
+        <h2 id="analytics-title" class="block-title">{{ copy.analytics.pageTitle }}</h2>
+      </header>
+      <a :href="site.githubUrl" class="profile-link" target="_blank" rel="noopener noreferrer">
+        {{ copy.analytics.viewProfile }}
+        <PhArrowUpRight :size="12" aria-hidden="true" />
+      </a>
+    </section>
   </main>
 </template>
 
@@ -243,6 +250,28 @@ function isExternal(href: string): boolean {
 
 .block {
   margin-top: clamp(40px, 6vw, 56px);
+  scroll-margin-top: 24px;
+}
+
+.profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--signal-text);
+  text-decoration: none;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.profile-link:hover {
+  gap: 10px;
+  color: var(--signal);
+}
+
+.profile-link:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
 }
 
 .block-head {
