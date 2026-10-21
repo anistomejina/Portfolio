@@ -7,8 +7,8 @@
  * - Painted on a fixed, full-viewport layer at z-index -1. #app isolates stacking, so the glyphs sit
  *   above the page background but under every piece of content (cards and the nav pill hide them).
  * - Drawn with tsParticles (lazy-loaded the first time the trail is needed). The whole instance is
- *   rebuilt when the theme changes so it picks up the new glyph colour (grey in light mode,
- *   green in dark mode) and peak opacity.
+ *   rebuilt when the theme changes so it picks up that theme's shade of the green accent and its
+ *   peak opacity.
  */
 import type { Container, ISourceOptions } from '@tsparticles/engine'
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
@@ -29,7 +29,7 @@ const TAIL_OFFSET = { x: 11, y: 17 } as const
 const PEAK_OPACITY: Record<Theme, number> = { light: 0.86, dark: 0.85 }
 /** A glyph is removed once it has faded down to this opacity. */
 const FLOOR_OPACITY = 0.1
-const FALLBACK_GLYPH_COLOR = '#777a74'
+const FALLBACK_GLYPH_COLOR = '#2b8a60'
 
 const { theme } = useTheme()
 
@@ -41,13 +41,9 @@ let instance: Container | null = null
 let generation = 0
 let lastSpawnAt = Number.NEGATIVE_INFINITY
 
-/** Glyph colour token per theme: muted grey in light mode, the green accent in dark mode. */
-const GLYPH_TOKEN: Record<Theme, string> = { light: '--text-muted', dark: '--signal' }
-
+/** The green accent (--signal), which each theme defines in its own shade. */
 function glyphColor(): string {
-  const value = getComputedStyle(document.documentElement)
-    .getPropertyValue(GLYPH_TOKEN[theme.value])
-    .trim()
+  const value = getComputedStyle(document.documentElement).getPropertyValue('--signal').trim()
   return value || FALLBACK_GLYPH_COLOR
 }
 
