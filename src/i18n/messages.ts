@@ -316,9 +316,20 @@ const en: Messages = {
     // YOUR CONTENT: newest first.
     entries: [
       {
+        slug: 'entelegen',
+        role: 'DevSecOps Engineer',
+        period: 'Dec 2025 — present',
+        company: 'Entelegen Analytics LLP',
+        location: 'Coimbatore, India',
+        // YOUR CONTENT: generic summary, replace with your actual work.
+        description:
+          'Building security into CI/CD pipelines and cloud infrastructure: automating deployments with infrastructure as code, hardening AWS environments and adding security checks and monitoring to the delivery process.',
+        skills: ['DevSecOps', 'AWS', 'Terraform', 'Jenkins', 'Docker', 'CI/CD security'],
+      },
+      {
         slug: 'career-ladder',
         role: 'Security Analyst',
-        period: 'Dec 2024 — present',
+        period: 'Dec 2024 — Nov 2025',
         company: 'Career Ladder',
         location: 'Coimbatore, India',
         description:
@@ -587,9 +598,20 @@ const de: Messages = {
     // YOUR CONTENT (same slugs as English): newest first.
     entries: [
       {
+        slug: 'entelegen',
+        role: 'DevSecOps Engineer',
+        period: 'Dez. 2025 — heute',
+        company: 'Entelegen Analytics LLP',
+        location: 'Coimbatore, Indien',
+        // YOUR CONTENT: allgemeine Zusammenfassung, durch deine tatsächliche Arbeit ersetzen.
+        description:
+          'Sicherheit in CI/CD-Pipelines und Cloud-Infrastruktur verankern: Deployments mit Infrastructure as Code automatisieren, AWS-Umgebungen härten und Security-Checks sowie Monitoring in den Delivery-Prozess integrieren.',
+        skills: ['DevSecOps', 'AWS', 'Terraform', 'Jenkins', 'Docker', 'CI/CD-Security'],
+      },
+      {
         slug: 'career-ladder',
         role: 'Security Analyst',
-        period: 'Dez. 2024 — heute',
+        period: 'Dez. 2024 — Nov. 2025',
         company: 'Career Ladder',
         location: 'Coimbatore, Indien',
         description:
