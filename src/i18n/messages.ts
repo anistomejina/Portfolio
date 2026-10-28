@@ -81,13 +81,15 @@ export const homeSectionIds = {
 /** YOUR CONTENT: technology pills on the home hero (same in every language). */
 export const techStack: readonly string[] = [
   'AWS',
+  'Azure',
+  'GCP',
+  'OCI',
   'Terraform',
   'Docker',
   'Jenkins',
-  'Python',
   'Burp Suite',
   'Splunk',
-  'Wazuh',
+  'Python',
 ]
 
 // ---------------------------------------------------------------------------------------------
@@ -246,7 +248,7 @@ const en: Messages = {
     availability: 'available for projects and opportunities',
     // YOUR CONTENT
     stats: [
-      { value: '4', label: 'security & cloud projects' },
+      { value: '200+', label: 'VDP reports submitted' },
       { value: 'Top 4%', label: 'on TryHackMe' },
       { value: '8+', label: 'certifications' },
     ],
@@ -368,7 +370,11 @@ const en: Messages = {
         items: ['Burp Suite', 'Nmap', 'Acunetix', 'Nessus', 'Splunk', 'Wazuh', 'Fortinet 40F'],
       },
       {
-        label: '~/AWS',
+        label: '~/Cloud platforms',
+        items: ['AWS', 'Microsoft Azure', 'Google Cloud (GCP)', 'Oracle Cloud (OCI)'],
+      },
+      {
+        label: '~/AWS services',
         items: ['S3', 'EC2', 'RDS', 'VPC', 'ELB', 'Lambda', 'DynamoDB', 'CloudWatch', 'Elastic Beanstalk', 'Redshift'],
       },
       {
@@ -385,7 +391,7 @@ const en: Messages = {
       },
       {
         label: '~/Achievements',
-        items: ['Top 4% on TryHackMe', 'GDSC Cybersecurity Chapter lead, PEC', '4 security awareness workshops', 'Letter of Appreciation, Vulnerability Disclosure Program'],
+        items: ['200+ reports to Vulnerability Disclosure Programs', 'Top 4% on TryHackMe', 'GDSC Cybersecurity Chapter lead, PEC', '4 security awareness workshops', 'Letter of Appreciation, Vulnerability Disclosure Program'],
       },
     ],
   },
@@ -528,7 +534,7 @@ const de: Messages = {
     availability: 'offen für Projekte und neue Herausforderungen',
     // YOUR CONTENT
     stats: [
-      { value: '4', label: 'Security- & Cloud-Projekte' },
+      { value: '200+', label: 'VDP-Reports eingereicht' },
       { value: 'Top 4 %', label: 'auf TryHackMe' },
       { value: '8+', label: 'Zertifikate' },
     ],
@@ -650,7 +656,11 @@ const de: Messages = {
         items: ['Burp Suite', 'Nmap', 'Acunetix', 'Nessus', 'Splunk', 'Wazuh', 'Fortinet 40F'],
       },
       {
-        label: '~/AWS',
+        label: '~/Cloud-Plattformen',
+        items: ['AWS', 'Microsoft Azure', 'Google Cloud (GCP)', 'Oracle Cloud (OCI)'],
+      },
+      {
+        label: '~/AWS-Services',
         items: ['S3', 'EC2', 'RDS', 'VPC', 'ELB', 'Lambda', 'DynamoDB', 'CloudWatch', 'Elastic Beanstalk', 'Redshift'],
       },
       {
@@ -667,7 +677,7 @@ const de: Messages = {
       },
       {
         label: '~/Erfolge',
-        items: ['Top 4 % auf TryHackMe', 'Leitung GDSC Cybersecurity Chapter, PEC', '4 Security-Awareness-Workshops', 'Dankesschreiben, Vulnerability Disclosure Program'],
+        items: ['200+ Reports an Vulnerability Disclosure Programs', 'Top 4 % auf TryHackMe', 'Leitung GDSC Cybersecurity Chapter, PEC', '4 Security-Awareness-Workshops', 'Dankesschreiben, Vulnerability Disclosure Program'],
       },
     ],
   },
