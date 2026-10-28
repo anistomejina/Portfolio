@@ -378,6 +378,10 @@ const en: Messages = {
         items: ['S3', 'EC2', 'RDS', 'VPC', 'ELB', 'Lambda', 'DynamoDB', 'CloudWatch', 'Elastic Beanstalk', 'Redshift'],
       },
       {
+        label: '~/AI tools',
+        items: ['Claude Code', 'Codex'],
+      },
+      {
         label: '~/CI/CD & IaC',
         items: ['Docker', 'Ansible', 'Terraform', 'Jenkins', 'Git', 'GitHub'],
       },
@@ -662,6 +666,10 @@ const de: Messages = {
       {
         label: '~/AWS-Services',
         items: ['S3', 'EC2', 'RDS', 'VPC', 'ELB', 'Lambda', 'DynamoDB', 'CloudWatch', 'Elastic Beanstalk', 'Redshift'],
+      },
+      {
+        label: '~/KI-Tools',
+        items: ['Claude Code', 'Codex'],
       },
       {
         label: '~/CI/CD & IaC',
