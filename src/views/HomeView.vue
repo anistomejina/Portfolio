@@ -16,7 +16,8 @@ const HOME_POST_COUNT = 2
 
 const { copy } = useLocale()
 
-const projects = computed(() => copy.value.projects.items ?? [])
+/** The home showcase is designed for three cards (one featured + two stacked); /projects lists all. */
+const projects = computed(() => (copy.value.projects.items ?? []).slice(0, 3))
 const recentPosts = computed(() => (copy.value.posts.items ?? []).slice(0, HOME_POST_COUNT))
 </script>
 

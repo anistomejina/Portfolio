@@ -84,7 +84,7 @@ The workflow in `.github/workflows/deploy.yml` builds and publishes the site on 
 2. Under **Build and deployment → Source**, choose **GitHub Actions**.
 3. Push to `main`, or run the workflow from the **Actions** tab.
 
-The build uses `BASE_PATH=/Portfolio/` because the site is served from `https://anistomejina.github.io/Portfolio/`. If you rename the repository, change `BASE_PATH` in the workflow to match. The workflow also copies `index.html` to `404.html`, so links such as `/Portfolio/projects/project-two` work when opened directly.
+The build uses `BASE_PATH=/Portfolio/` because the site is served from `https://anistomejina.github.io/Portfolio/`. If you rename the repository, change `BASE_PATH` in the workflow to match. The workflow also copies `index.html` to `404.html`, so links such as `/Portfolio/projects/ssh-honeypot-aws` work when opened directly.
 
 ## Project structure
 

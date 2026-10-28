@@ -80,13 +80,14 @@ export const homeSectionIds = {
 
 /** YOUR CONTENT: technology pills on the home hero (same in every language). */
 export const techStack: readonly string[] = [
-  'Tech 1',
-  'Tech 2',
-  'Tech 3',
-  'Tech 4',
-  'Tech 5',
-  'Tech 6',
-  'Tech 7',
+  'AWS',
+  'Terraform',
+  'Docker',
+  'Jenkins',
+  'Python',
+  'Burp Suite',
+  'Splunk',
+  'Wazuh',
 ]
 
 // ---------------------------------------------------------------------------------------------
@@ -211,20 +212,6 @@ const links = {
   resume: site.resumeFile ? asset(site.resumeFile) : '',
 }
 
-/** YOUR CONTENT: project URLs and images, shared by both languages. */
-const projectMedia = {
-  two: {
-    repoUrl: site.githubUrl,
-    coverImage: asset('images/projects/project-two-cover.svg'),
-  },
-  three: {
-    repoUrl: site.githubUrl,
-    demoUrl: 'https://example.com',
-    coverImage: asset('images/projects/project-three-cover.svg'),
-    detailImage: asset('images/projects/project-three-detail.svg'),
-  },
-}
-
 // ---------------------------------------------------------------------------------------------
 // English
 // ---------------------------------------------------------------------------------------------
@@ -259,9 +246,9 @@ const en: Messages = {
     availability: 'available for projects and opportunities',
     // YOUR CONTENT
     stats: [
-      { value: '0', label: 'projects built' },
-      { value: '0', label: 'posts written' },
-      { value: '0', label: 'years of experience' },
+      { value: '4', label: 'security & cloud projects' },
+      { value: 'Top 4%', label: 'on TryHackMe' },
+      { value: '8+', label: 'certifications' },
     ],
     socialLinks: [
       {
@@ -329,46 +316,65 @@ const en: Messages = {
     // YOUR CONTENT: newest first.
     entries: [
       {
-        slug: 'role-one',
-        role: 'Your current role',
-        period: 'Jan 2025 — present · 10 months',
-        company: 'Company name',
-        location: 'City, Country',
+        slug: 'career-ladder',
+        role: 'Security Analyst',
+        period: 'Dec 2024 — present',
+        company: 'Career Ladder',
+        location: 'Coimbatore, India',
         description:
-          'Write a short description of your responsibilities and the impact you had in this role.',
-        skills: ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4', 'Skill 5'],
+          'Cloud security and threat detection across 15 AWS services (EC2, S3, Lambda and more). Built secure S3 automation pipelines with Terraform and Jenkins for compliance, and automated vulnerability scans and incident response on EC2 and Lambda with Docker, Prometheus and Grafana for continuous monitoring.',
+        skills: ['AWS', 'Terraform', 'Jenkins', 'Docker', 'Prometheus', 'Grafana', 'Threat detection'],
       },
       {
-        slug: 'role-two',
-        role: 'Previous role',
-        period: 'Mar 2023 — Dec 2024 · 1 year 10 months',
-        company: 'Another company',
+        slug: 'systech',
+        role: 'Cyber Security Intern',
+        period: 'May 2024 — Dec 2024',
+        company: 'Systech Network Academy',
+        location: 'Coimbatore, India',
         description:
-          'Describe what you worked on, the team you were part of and what you delivered.',
-        skills: ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4'],
+          'Configured a Fortinet 40F firewall, optimised routing and analysed network traffic. Gained hands-on experience with switches, routers and Windows Server, and used Azure security tooling and ethical hacking to assess cloud vulnerabilities.',
+        skills: ['Fortinet 40F', 'Routing', 'Windows Server', 'Azure', 'Ethical hacking'],
       },
       {
-        slug: 'role-three',
-        role: 'First role',
-        period: 'Jun 2022 — Feb 2023 · 9 months',
-        company: 'First company',
-        description: 'Describe what you learned and the main things you built here.',
-        skills: ['Skill 1', 'Skill 2', 'Skill 3'],
+        slug: 'paavai',
+        role: 'B.E. in Cyber Security',
+        period: 'Nov 2020 — May 2024',
+        company: 'Paavai Engineering College',
+        location: 'Namakkal, India',
+        description:
+          'Bachelor of Engineering in Cyber Security, CGPA 8.3. Led the GDSC Cybersecurity Chapter at PEC College, organising training and workshops.',
+        skills: ['Cyber security', 'Networking', 'GDSC lead'],
       },
     ],
     // YOUR CONTENT: one row per category ("~/" is stripped for display).
     toolbox: [
       {
         label: '~/Languages',
-        items: ['Language 1', 'Language 2', 'Language 3', 'Language 4', 'Language 5'],
+        items: ['Python', 'SQL', 'Bash', 'PowerShell'],
       },
       {
-        label: '~/Frameworks & libraries',
-        items: ['Framework 1', 'Framework 2', 'Framework 3', 'Library 1', 'Library 2', 'Library 3'],
+        label: '~/Security tools',
+        items: ['Burp Suite', 'Nmap', 'Acunetix', 'Nessus', 'Splunk', 'Wazuh', 'Fortinet 40F'],
       },
       {
-        label: '~/Tools & platforms',
-        items: ['Tool 1', 'Tool 2', 'Tool 3', 'Tool 4', 'Tool 5'],
+        label: '~/AWS',
+        items: ['S3', 'EC2', 'RDS', 'VPC', 'ELB', 'Lambda', 'DynamoDB', 'CloudWatch', 'Elastic Beanstalk', 'Redshift'],
+      },
+      {
+        label: '~/CI/CD & IaC',
+        items: ['Docker', 'Ansible', 'Terraform', 'Jenkins', 'Git', 'GitHub'],
+      },
+      {
+        label: '~/GRC',
+        items: ['ISO 27001', 'ISO 27017', 'GDPR', 'NIST', 'HIPAA'],
+      },
+      {
+        label: '~/Certifications',
+        items: ['RHCSA', 'CNSP', 'Junior Penetration Tester', 'CCNA & CCNP', 'MCSA & MCSE', 'Cloud Computing with Azure', 'Ethical Hacking', 'AWS Cloud Practitioner (in progress)'],
+      },
+      {
+        label: '~/Achievements',
+        items: ['Top 4% on TryHackMe', 'GDSC Cybersecurity Chapter lead, PEC', '4 security awareness workshops', 'Letter of Appreciation, Vulnerability Disclosure Program'],
       },
     ],
   },
@@ -391,51 +397,51 @@ const en: Messages = {
     notFoundText: 'This project does not exist or does not have a published page yet.',
     comingSoon: 'Coming soon',
     viewAllProjects: 'view all projects',
-    // YOUR CONTENT: the home showcase is designed for three (first = featured).
+    // The home page shows the first three (first = featured); /projects shows all.
     items: [
       {
-        slug: 'project-one',
+        slug: 'ssh-honeypot-aws',
         index: '01',
-        tag: 'category',
-        title: 'Project one',
-        topics: ['Topic one', 'Topic two', 'Topic three'],
-        status: 'in-progress',
-        locked: true,
-      },
-      {
-        slug: 'project-two',
-        index: '02',
-        tag: 'category',
-        title: 'Project two',
-        impact: {
-          problem: 'Describe the problem this project solves.',
-          result: 'Write a short description of what you built and the result.',
-        },
-        publishedAt: '2026-03-10',
-        repoUrl: projectMedia.two.repoUrl,
+        tag: 'cloud security',
+        title: 'SSH Honeypot in AWS',
+        topics: ['Cowrie', 'AWS EC2', 'Docker', 'VPC Flow Logs', 'CloudWatch'],
         status: 'live',
-        coverImage: projectMedia.two.coverImage,
-        coverAlt: 'Placeholder illustration for project two',
         hasDetails: true,
       },
       {
-        slug: 'project-three',
-        index: '03',
-        tag: 'category',
-        title: 'Project three',
+        slug: 'malware-analysis-pywhat',
+        index: '02',
+        tag: 'threat intel',
+        title: 'Malware Analysis with PyWhat',
         impact: {
-          problem: 'Describe the problem this project solves.',
-          result: 'Write a short description of what you built and the result.',
+          problem: 'Spotting malicious files and indicators by hand is slow.',
+          result: 'Used PyWhat to identify malware signatures and behaviours and turned the findings into detection insights.',
         },
-        publishedAt: '2026-05-22',
-        repoUrl: projectMedia.three.repoUrl,
-        demoUrl: projectMedia.three.demoUrl,
         status: 'live',
-        coverImage: projectMedia.three.coverImage,
-        coverAlt: 'Placeholder illustration for project three',
-        coverZoom: true,
-        detailImage: projectMedia.three.detailImage,
-        detailImageAlt: 'Placeholder screenshot of project three',
+        hasDetails: true,
+      },
+      {
+        slug: 'three-tier-jenkins',
+        index: '03',
+        tag: 'devops',
+        title: '3-Tier Architecture with Jenkins',
+        impact: {
+          problem: 'Data on AWS was hard to analyse and the ETL steps ran unreliably.',
+          result: 'A Jenkins-built 3-tier AWS stack with Redshift for analysis and Airflow for reliable, timely ETL.',
+        },
+        status: 'live',
+        hasDetails: true,
+      },
+      {
+        slug: 'ecommerce-aws',
+        index: '04',
+        tag: 'cloud',
+        title: 'E-Commerce Site on AWS',
+        impact: {
+          problem: 'A team of three needed a robust, secure home for a web shop.',
+          result: 'I designed the cloud architecture on S3, Route 53, CloudFront and ACM to host it.',
+        },
+        status: 'live',
         hasDetails: true,
       },
     ],
@@ -511,9 +517,9 @@ const de: Messages = {
     availability: 'offen für Projekte und neue Herausforderungen',
     // YOUR CONTENT
     stats: [
-      { value: '0', label: 'Projekte' },
-      { value: '0', label: 'Beiträge' },
-      { value: '0', label: 'Jahre Erfahrung' },
+      { value: '4', label: 'Security- & Cloud-Projekte' },
+      { value: 'Top 4 %', label: 'auf TryHackMe' },
+      { value: '8+', label: 'Zertifikate' },
     ],
     socialLinks: [
       {
@@ -581,53 +587,65 @@ const de: Messages = {
     // YOUR CONTENT (same slugs as English): newest first.
     entries: [
       {
-        slug: 'role-one',
-        role: 'Deine aktuelle Position',
-        period: 'Jan. 2025 – heute · 10 Monate',
-        company: 'Name des Unternehmens',
-        location: 'Stadt, Land',
+        slug: 'career-ladder',
+        role: 'Security Analyst',
+        period: 'Dez. 2024 — heute',
+        company: 'Career Ladder',
+        location: 'Coimbatore, Indien',
         description:
-          'Beschreibe kurz deine Aufgaben und was du in dieser Position bewirkt hast.',
-        skills: ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4', 'Skill 5'],
+          'Cloud-Security und Threat Detection über 15 AWS-Services (EC2, S3, Lambda u. a.). Sichere S3-Automatisierungspipelines mit Terraform und Jenkins für Compliance aufgebaut sowie Schwachstellenscans und Incident Response auf EC2 und Lambda mit Docker, Prometheus und Grafana für kontinuierliches Monitoring automatisiert.',
+        skills: ['AWS', 'Terraform', 'Jenkins', 'Docker', 'Prometheus', 'Grafana', 'Threat Detection'],
       },
       {
-        slug: 'role-two',
-        role: 'Vorherige Position',
-        period: 'März 2023 – Dez. 2024 · 1 Jahr, 10 Monate',
-        company: 'Weiteres Unternehmen',
+        slug: 'systech',
+        role: 'Cyber Security Intern',
+        period: 'Mai 2024 — Dez. 2024',
+        company: 'Systech Network Academy',
+        location: 'Coimbatore, Indien',
         description:
-          'Beschreibe, woran du gearbeitet hast, in welchem Team du warst und was du umgesetzt hast.',
-        skills: ['Skill 1', 'Skill 2', 'Skill 3', 'Skill 4'],
+          'Eine Fortinet-40F-Firewall konfiguriert, Routing optimiert und Netzwerkverkehr analysiert. Praxiserfahrung mit Switches, Routern und Windows Server gesammelt und Cloud-Schwachstellen mit Azure-Security-Tools und Ethical Hacking bewertet.',
+        skills: ['Fortinet 40F', 'Routing', 'Windows Server', 'Azure', 'Ethical Hacking'],
       },
       {
-        slug: 'role-three',
-        role: 'Erste Position',
-        period: 'Juni 2022 – Feb. 2023 · 9 Monate',
-        company: 'Erstes Unternehmen',
-        description: 'Beschreibe, was du hier gelernt und was du hauptsächlich entwickelt hast.',
-        skills: ['Skill 1', 'Skill 2', 'Skill 3'],
+        slug: 'paavai',
+        role: 'B.E. in Cyber Security',
+        period: 'Nov. 2020 — Mai 2024',
+        company: 'Paavai Engineering College',
+        location: 'Namakkal, Indien',
+        description:
+          'Bachelor of Engineering in Cyber Security, CGPA 8,3. Leitung des GDSC Cybersecurity Chapters am PEC College mit Trainings und Workshops.',
+        skills: ['Cyber Security', 'Netzwerke', 'GDSC-Leitung'],
       },
     ],
     // YOUR CONTENT: one row per category ("~/" is stripped for display).
     toolbox: [
       {
         label: '~/Sprachen',
-        items: ['Sprache 1', 'Sprache 2', 'Sprache 3', 'Sprache 4', 'Sprache 5'],
+        items: ['Python', 'SQL', 'Bash', 'PowerShell'],
       },
       {
-        label: '~/Frameworks & Bibliotheken',
-        items: [
-          'Framework 1',
-          'Framework 2',
-          'Framework 3',
-          'Bibliothek 1',
-          'Bibliothek 2',
-          'Bibliothek 3',
-        ],
+        label: '~/Security-Tools',
+        items: ['Burp Suite', 'Nmap', 'Acunetix', 'Nessus', 'Splunk', 'Wazuh', 'Fortinet 40F'],
       },
       {
-        label: '~/Tools & Plattformen',
-        items: ['Tool 1', 'Tool 2', 'Tool 3', 'Tool 4', 'Tool 5'],
+        label: '~/AWS',
+        items: ['S3', 'EC2', 'RDS', 'VPC', 'ELB', 'Lambda', 'DynamoDB', 'CloudWatch', 'Elastic Beanstalk', 'Redshift'],
+      },
+      {
+        label: '~/CI/CD & IaC',
+        items: ['Docker', 'Ansible', 'Terraform', 'Jenkins', 'Git', 'GitHub'],
+      },
+      {
+        label: '~/GRC',
+        items: ['ISO 27001', 'ISO 27017', 'GDPR', 'NIST', 'HIPAA'],
+      },
+      {
+        label: '~/Zertifikate',
+        items: ['RHCSA', 'CNSP', 'Junior Penetration Tester', 'CCNA & CCNP', 'MCSA & MCSE', 'Cloud Computing with Azure', 'Ethical Hacking', 'AWS Cloud Practitioner (in Arbeit)'],
+      },
+      {
+        label: '~/Erfolge',
+        items: ['Top 4 % auf TryHackMe', 'Leitung GDSC Cybersecurity Chapter, PEC', '4 Security-Awareness-Workshops', 'Dankesschreiben, Vulnerability Disclosure Program'],
       },
     ],
   },
@@ -653,48 +671,48 @@ const de: Messages = {
     // YOUR CONTENT (same slugs as English): the home showcase is designed for three (first = featured).
     items: [
       {
-        slug: 'project-one',
+        slug: 'ssh-honeypot-aws',
         index: '01',
-        tag: 'kategorie',
-        title: 'Projekt eins',
-        topics: ['Thema eins', 'Thema zwei', 'Thema drei'],
-        status: 'in-progress',
-        locked: true,
-      },
-      {
-        slug: 'project-two',
-        index: '02',
-        tag: 'kategorie',
-        title: 'Projekt zwei',
-        impact: {
-          problem: 'Beschreibe das Problem, das dieses Projekt löst.',
-          result: 'Beschreibe kurz, was du gebaut hast und was dabei herausgekommen ist.',
-        },
-        publishedAt: '2026-03-10',
-        repoUrl: projectMedia.two.repoUrl,
+        tag: 'cloud security',
+        title: 'SSH-Honeypot in AWS',
+        topics: ['Cowrie', 'AWS EC2', 'Docker', 'VPC Flow Logs', 'CloudWatch'],
         status: 'live',
-        coverImage: projectMedia.two.coverImage,
-        coverAlt: 'Platzhalterillustration für Projekt zwei',
         hasDetails: true,
       },
       {
-        slug: 'project-three',
-        index: '03',
-        tag: 'kategorie',
-        title: 'Projekt drei',
+        slug: 'malware-analysis-pywhat',
+        index: '02',
+        tag: 'threat intel',
+        title: 'Malware-Analyse mit PyWhat',
         impact: {
-          problem: 'Beschreibe das Problem, das dieses Projekt löst.',
-          result: 'Beschreibe kurz, was du gebaut hast und was dabei herausgekommen ist.',
+          problem: 'Schädliche Dateien und Indikatoren von Hand zu finden ist langsam.',
+          result: 'Mit PyWhat Malware-Signaturen und -Verhalten erkannt und daraus Erkenntnisse für die Erkennung gewonnen.',
         },
-        publishedAt: '2026-05-22',
-        repoUrl: projectMedia.three.repoUrl,
-        demoUrl: projectMedia.three.demoUrl,
         status: 'live',
-        coverImage: projectMedia.three.coverImage,
-        coverAlt: 'Platzhalterillustration für Projekt drei',
-        coverZoom: true,
-        detailImage: projectMedia.three.detailImage,
-        detailImageAlt: 'Platzhalter-Screenshot von Projekt drei',
+        hasDetails: true,
+      },
+      {
+        slug: 'three-tier-jenkins',
+        index: '03',
+        tag: 'devops',
+        title: '3-Tier-Architektur mit Jenkins',
+        impact: {
+          problem: 'Daten auf AWS waren schwer auszuwerten und die ETL-Schritte liefen unzuverlässig.',
+          result: 'Ein per Jenkins gebauter 3-Tier-Stack auf AWS mit Redshift für Analysen und Airflow für zuverlässiges ETL.',
+        },
+        status: 'live',
+        hasDetails: true,
+      },
+      {
+        slug: 'ecommerce-aws',
+        index: '04',
+        tag: 'cloud',
+        title: 'E-Commerce-Website auf AWS',
+        impact: {
+          problem: 'Ein Dreierteam brauchte ein robustes, sicheres Zuhause für einen Webshop.',
+          result: 'Ich habe die Cloud-Architektur mit S3, Route 53, CloudFront und ACM für das Hosting entworfen.',
+        },
+        status: 'live',
         hasDetails: true,
       },
     ],
