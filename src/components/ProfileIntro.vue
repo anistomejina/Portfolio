@@ -95,7 +95,7 @@ const roleParts = computed<RolePart[]>(() => {
         v-for="link in heroLinks"
         :key="link.key"
         class="link-btn"
-        :class="{ 'link-btn--primary': link.primary }"
+        :class="[{ 'link-btn--primary': link.primary }, link.brand ? `link-btn--${link.brand}` : '']"
         :href="link.href"
         :download="link.download || undefined"
         :target="link.target"
@@ -210,6 +210,51 @@ const roleParts = computed<RolePart[]>(() => {
   font-family: var(--font-mono);
   font-size: 12px;
   text-decoration: none;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+/*
+ * Brand colours on hover, keyboard focus and tap (:active covers touch screens, where hover
+ * does not exist). Each button fills with its brand colour and the label turns light.
+ */
+.link-btn--linkedin {
+  --brand: #0a66c2;
+  --brand-ink: #ffffff;
+}
+
+.link-btn--github {
+  --brand: #24292f;
+  --brand-ink: #ffffff;
+}
+
+.link-btn--email {
+  /* Gmail red, darkened slightly so white text stays readable. */
+  --brand: #d93025;
+  --brand-ink: #ffffff;
+}
+
+:root[data-theme='dark'] .link-btn--github {
+  /* GitHub's own dark-mode inversion: a light button on the dark page. */
+  --brand: #f0f6fc;
+  --brand-ink: #0d1117;
+}
+
+@media (hover: hover) {
+  .link-btn[class*='link-btn--']:not(.link-btn--primary):hover {
+    color: var(--brand-ink);
+    background-color: var(--brand);
+    border-color: var(--brand);
+  }
+}
+
+.link-btn[class*='link-btn--']:not(.link-btn--primary):focus-visible,
+.link-btn[class*='link-btn--']:not(.link-btn--primary):active {
+  color: var(--brand-ink);
+  background-color: var(--brand);
+  border-color: var(--brand);
 }
 
 /* Filled ink pill: dark with light text in the light theme, inverted in the dark theme. */
@@ -248,3 +293,9 @@ const roleParts = computed<RolePart[]>(() => {
   border-radius: 50%;
 }
 </style>
+
+@media (prefers-reduced-motion: reduce) {
+  .link-btn {
+    transition: none;
+  }
+}
