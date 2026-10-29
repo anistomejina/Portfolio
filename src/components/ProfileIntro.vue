@@ -6,6 +6,7 @@ import GmailIcon from '@/components/icons/GmailIcon.vue'
 import LinkedInIcon from '@/components/icons/LinkedInIcon.vue'
 import ProfileStatItem from '@/components/ProfileStatItem.vue'
 import ScrambleName from '@/components/ScrambleName.vue'
+import TechLogo from '@/components/TechLogo.vue'
 import { useLocale } from '@/composables/useLocale'
 import { site } from '@/config/site'
 import { techStack } from '@/i18n/messages'
@@ -78,7 +79,7 @@ const roleParts = computed<RolePart[]>(() => {
 
     <ul v-if="stack.length" class="stack-row" :aria-label="copy.accessibility.techStack">
       <li v-for="(tech, position) in stack" :key="`${position}-${tech}`" class="stack-pill">
-        {{ tech }}
+        <TechLogo :name="tech" :size="13" />{{ tech }}
       </li>
     </ul>
 
@@ -156,6 +157,9 @@ const roleParts = computed<RolePart[]>(() => {
 }
 
 .stack-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 6px 12px;
   color: var(--text-secondary);
   background-color: var(--surface);

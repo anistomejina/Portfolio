@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import TechLogo from '@/components/TechLogo.vue'
 import type { ToolboxColumn } from '@/types/content'
 
 const props = defineProps<{
@@ -37,7 +38,7 @@ const rows = computed(() =>
         </header>
 
         <ul v-if="row.items.length" class="skill-list">
-          <li v-for="(item, index) in row.items" :key="`${index}-${item}`" class="skill-chip">{{ item }}</li>
+          <li v-for="(item, index) in row.items" :key="`${index}-${item}`" class="skill-chip"><TechLogo :name="item" :size="15" />{{ item }}</li>
         </ul>
       </section>
     </div>
@@ -121,6 +122,7 @@ const rows = computed(() =>
 .skill-chip {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   min-height: 40px;
   padding: 9px 16px;
   font-family: var(--font-mono);

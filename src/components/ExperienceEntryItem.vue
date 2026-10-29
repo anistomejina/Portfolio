@@ -2,6 +2,7 @@
 import { PhCaretDown } from '@phosphor-icons/vue'
 import { computed } from 'vue'
 
+import TechLogo from '@/components/TechLogo.vue'
 import { useLocale } from '@/composables/useLocale'
 import type { ExperienceEntry } from '@/types/content'
 
@@ -57,7 +58,7 @@ const skillsLabel = computed(() => copy.value.experience.skillsLabel || 'Skills'
           <p v-if="entry.location" class="entry-location">{{ entry.location }}</p>
           <p v-if="entry.description" class="entry-description">{{ entry.description }}</p>
           <ul v-if="skills.length" class="entry-skills" :aria-label="skillsLabel">
-            <li v-for="(skill, index) in skills" :key="`${index}-${skill}`" class="skill-chip">{{ skill }}</li>
+            <li v-for="(skill, index) in skills" :key="`${index}-${skill}`" class="skill-chip"><TechLogo :name="skill" :size="13" />{{ skill }}</li>
           </ul>
         </div>
       </div>
@@ -192,6 +193,9 @@ const skillsLabel = computed(() => copy.value.experience.skillsLabel || 'Skills'
 }
 
 .skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 6px 12px;
   font-family: var(--font-mono);
   font-size: 11px;
