@@ -498,7 +498,7 @@ const en: Messages = {
     contactTitle: 'Get in touch',
     // YOUR CONTENT
     contactNote: 'I usually reply within two working days.',
-    contactEmail: 'Email',
+    contactEmail: 'Gmail',
     contactLinkedIn: 'LinkedIn',
     contactGitHub: 'GitHub issues',
   },
@@ -788,7 +788,7 @@ const de: Messages = {
     contactTitle: 'Kontakt',
     // YOUR CONTENT
     contactNote: 'Ich antworte meistens innerhalb von zwei Werktagen.',
-    contactEmail: 'E-Mail',
+    contactEmail: 'Gmail',
     contactLinkedIn: 'LinkedIn',
     contactGitHub: 'GitHub-Issues',
   },

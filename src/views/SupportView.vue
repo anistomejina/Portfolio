@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   PhArrowUpRight,
+  PhGithubLogo,
   PhBriefcase,
   PhCoffee,
   PhHeart,
@@ -9,6 +10,8 @@ import {
 } from '@phosphor-icons/vue'
 import { computed, onBeforeUnmount, onMounted, ref, type Component } from 'vue'
 
+import GmailIcon from '@/components/icons/GmailIcon.vue'
+import LinkedInIcon from '@/components/icons/LinkedInIcon.vue'
 import ScrambleName from '@/components/ScrambleName.vue'
 import { useLocale } from '@/composables/useLocale'
 import { site } from '@/config/site'
@@ -204,11 +207,17 @@ function isExternal(href: string): boolean {
           <a
             :href="contact.href"
             class="contact"
+            :class="`contact--${contact.key}`"
             :target="isExternal(contact.href) ? '_blank' : undefined"
             :rel="isExternal(contact.href) ? 'noopener noreferrer' : undefined"
             v-on="isEmailPlaceholder(contact.href) ? mailtoHandlers : {}"
           >
-            <span class="contact-label">{{ contact.label }}</span>
+            <span class="contact-label">
+              <GmailIcon v-if="contact.key === 'email'" class="contact-icon" :size="16" />
+              <LinkedInIcon v-else-if="contact.key === 'linkedin'" class="contact-icon" :size="15" />
+              <PhGithubLogo v-else class="contact-icon" :size="15" aria-hidden="true" />
+              {{ contact.label }}
+            </span>
             <span class="contact-value">{{ contact.value }}</span>
             <PhArrowUpRight class="contact-arrow" :size="14" aria-hidden="true" />
           </a>
@@ -408,13 +417,99 @@ function isExternal(href: string): boolean {
   grid-template-columns: minmax(120px, 200px) minmax(0, 1fr) auto;
   align-items: center;
   gap: 16px;
-  padding: 16px 0;
+  /* Side padding pulled back by the margin, so text stays aligned but a filled row has room. */
+  margin-inline: -14px;
+  padding: 16px 14px;
   color: inherit;
   text-decoration: none;
   border-bottom: 0.5px solid var(--border);
+  border-radius: 12px;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+/* Brand colours, the same as the home page buttons. */
+.contact--linkedin {
+  --brand: #0a66c2;
+  --brand-ink: #ffffff;
+  --brand-muted: rgba(255, 255, 255, 0.78);
+}
+
+.contact--github {
+  --brand: #24292f;
+  --brand-ink: #ffffff;
+  --brand-muted: rgba(255, 255, 255, 0.72);
+}
+
+:root[data-theme='dark'] .contact--github {
+  --brand: #f0f6fc;
+  --brand-ink: #0d1117;
+  --brand-muted: #57606a;
+}
+
+.contact--email {
+  --brand: #ffffff;
+  --brand-ink: #3c4043;
+  --brand-muted: #5f6368;
+}
+
+@media (hover: hover) {
+  .contact:hover {
+    background-color: var(--brand);
+    border-bottom-color: transparent;
+  }
+
+  .contact:hover .contact-label {
+    color: var(--brand-muted);
+  }
+
+  .contact:hover .contact-value,
+  .contact:hover .contact-arrow,
+  .contact:hover .contact-icon {
+    color: var(--brand-ink);
+  }
+
+  .contact--email:hover {
+    box-shadow: 0 0 0 1px #dadce0, 0 1px 3px rgba(60, 64, 67, 0.25);
+  }
+}
+
+.contact:focus-visible,
+.contact:active {
+  background-color: var(--brand);
+  border-bottom-color: transparent;
+}
+
+.contact:focus-visible .contact-label,
+.contact:active .contact-label {
+  color: var(--brand-muted);
+}
+
+.contact:focus-visible .contact-value,
+.contact:focus-visible .contact-arrow,
+.contact:focus-visible .contact-icon,
+.contact:active .contact-value,
+.contact:active .contact-arrow,
+.contact:active .contact-icon {
+  color: var(--brand-ink);
+}
+
+.contact--email:focus-visible,
+.contact--email:active {
+  box-shadow: 0 0 0 1px #dadce0, 0 1px 3px rgba(60, 64, 67, 0.25);
+}
+
+.contact-icon {
+  flex: none;
+  color: var(--ink);
 }
 
 .contact-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
@@ -435,11 +530,6 @@ function isExternal(href: string): boolean {
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.contact:hover .contact-value,
-.contact:hover .contact-arrow {
-  color: var(--signal-text);
-}
-
 .contact:hover .contact-arrow {
   transform: translate(2px, -2px);
 }
@@ -458,6 +548,7 @@ function isExternal(href: string): boolean {
 @media (prefers-reduced-motion: reduce) {
   .way,
   .way-action,
+  .contact,
   .contact-arrow {
     transition: none;
   }
