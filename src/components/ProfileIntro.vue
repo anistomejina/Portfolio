@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { PhEnvelopeSimple, PhGithubLogo } from '@phosphor-icons/vue'
+import { PhGithubLogo } from '@phosphor-icons/vue'
 import { computed } from 'vue'
 
+import GmailIcon from '@/components/icons/GmailIcon.vue'
 import LinkedInIcon from '@/components/icons/LinkedInIcon.vue'
 import ProfileStatItem from '@/components/ProfileStatItem.vue'
 import ScrambleName from '@/components/ScrambleName.vue'
@@ -111,14 +112,7 @@ const roleParts = computed<RolePart[]>(() => {
           focusable="false"
         />
         <LinkedInIcon v-else-if="link.brand === 'linkedin'" class="link-icon" :size="16" />
-        <PhEnvelopeSimple
-          v-else-if="link.brand === 'email'"
-          class="link-icon"
-          :size="14"
-          weight="regular"
-          aria-hidden="true"
-          focusable="false"
-        />
+        <GmailIcon v-else-if="link.brand === 'email'" class="link-icon" :size="16" />
         <span v-else-if="link.glyph" class="link-icon" aria-hidden="true">{{ link.glyph }}</span>
         {{ link.label }}
         <span v-if="link.newTab" class="sr-only">{{ copy.accessibility.opensInNewTab }}</span>
@@ -231,9 +225,23 @@ const roleParts = computed<RolePart[]>(() => {
 }
 
 .link-btn--email {
-  /* Gmail red, darkened slightly so white text stays readable. */
-  --brand: #d93025;
-  --brand-ink: #ffffff;
+  /* Google-style white button, so the multicolour Gmail logo stays visible. */
+  --brand: #ffffff;
+  --brand-ink: #3c4043;
+}
+
+/* White on the pale page needs an edge: Google's grey border plus a soft lift. */
+@media (hover: hover) {
+  .link-btn--email:hover {
+    border-color: #dadce0 !important;
+    box-shadow: 0 1px 3px rgba(60, 64, 67, 0.25);
+  }
+}
+
+.link-btn--email:focus-visible,
+.link-btn--email:active {
+  border-color: #dadce0 !important;
+  box-shadow: 0 1px 3px rgba(60, 64, 67, 0.25);
 }
 
 :root[data-theme='dark'] .link-btn--github {

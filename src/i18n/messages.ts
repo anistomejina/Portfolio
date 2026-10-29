@@ -262,7 +262,7 @@ const en: Messages = {
       },
       { label: 'LinkedIn', href: links.linkedin, brand: 'linkedin' },
       { label: 'GitHub', href: links.github, brand: 'github' },
-      { label: 'email', href: links.email, brand: 'email' },
+      { label: 'Gmail', href: links.email, brand: 'email' },
     ],
   },
 
@@ -552,7 +552,7 @@ const de: Messages = {
       },
       { label: 'LinkedIn', href: links.linkedin, brand: 'linkedin' },
       { label: 'GitHub', href: links.github, brand: 'github' },
-      { label: 'E-Mail', href: links.email, brand: 'email' },
+      { label: 'Gmail', href: links.email, brand: 'email' },
     ],
   },
 
