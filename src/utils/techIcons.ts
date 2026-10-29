@@ -24,6 +24,8 @@ const TECH_ALIASES: Record<string, string> = {
   cloudwatch: 'cloudwatch',
   'elastic beanstalk': 'beanstalk',
   redshift: 'redshift',
+  'aws cloud practitioner (in progress)': 'aws',
+  'aws cloud practitioner (in arbeit)': 'aws',
   'claude code': 'claude',
   codex: 'codex',
   docker: 'docker',

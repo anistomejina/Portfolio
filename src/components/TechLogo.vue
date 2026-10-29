@@ -1,6 +1,28 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import {
+  PhBug,
+  PhCrosshair,
+  PhDatabase,
+  PhHardDrives,
+  PhHeartbeat,
+  PhLockKey,
+  PhMedal,
+  PhPath,
+  PhPresentationChart,
+  PhShareNetwork,
+  PhShieldCheck,
+  PhShieldCheckered,
+  PhTrophy,
+  PhUsersThree,
+} from '@phosphor-icons/vue'
+import { computed, type Component } from 'vue'
 
+import {
+  ICON_BADGES,
+  ICON_BADGES_CASE_SENSITIVE,
+  TEXT_BADGES,
+  type IconBadgeName,
+} from '@/utils/techBadges'
 import { techIconFor } from '@/utils/techIcons'
 
 const props = defineProps<{
@@ -9,21 +31,80 @@ const props = defineProps<{
   size?: number
 }>()
 
-const icon = computed(() => techIconFor(props.name))
+const ICON_COMPONENTS: Record<IconBadgeName, Component> = {
+  'shield-check': PhShieldCheck,
+  'shield-checkered': PhShieldCheckered,
+  crosshair: PhCrosshair,
+  path: PhPath,
+  'hard-drives': PhHardDrives,
+  bug: PhBug,
+  'lock-key': PhLockKey,
+  network: PhShareNetwork,
+  users: PhUsersThree,
+  trophy: PhTrophy,
+  presentation: PhPresentationChart,
+  medal: PhMedal,
+  database: PhDatabase,
+  heartbeat: PhHeartbeat,
+}
+
+const height = computed(() => props.size ?? 14)
+const key = computed(() => props.name.trim().toLowerCase())
+
+// 1. a real logo, 2. a line icon for a general skill, 3. a lettered tile for a named tool or cert.
+const logo = computed(() => techIconFor(props.name))
+const iconName = computed(
+  () => ICON_BADGES_CASE_SENSITIVE[props.name.trim()] ?? ICON_BADGES[key.value] ?? null,
+)
+const iconComponent = computed(() => (iconName.value ? ICON_COMPONENTS[iconName.value] : null))
+const tile = computed(() => (logo.value || iconComponent.value ? null : (TEXT_BADGES[key.value] ?? null)))
+
+/** Tile width grows with the letters so "NIST" fits as well as "N". */
+const tileWidth = computed(() => (tile.value ? Math.max(16, tile.value.text.length * 6 + 6) : 16))
 </script>
 
 <template>
-  <!-- Bodies come from the bundled, build-time icon data (src/utils/techIconData.ts), never from user input. -->
+  <!-- Logo bodies come from the bundled, build-time icon data (src/utils/techIconData.ts), never from user input. -->
   <svg
-    v-if="icon"
+    v-if="logo"
     class="tech-logo"
-    :viewBox="icon.viewBox"
-    :height="size ?? 14"
+    :viewBox="logo.viewBox"
+    :height="height"
     preserveAspectRatio="xMidYMid meet"
     aria-hidden="true"
     focusable="false"
-    v-html="icon.body"
+    v-html="logo.body"
   />
+  <component
+    :is="iconComponent"
+    v-else-if="iconComponent"
+    class="tech-logo tech-logo--icon"
+    :size="height + 1"
+    weight="regular"
+    aria-hidden="true"
+  />
+  <svg
+    v-else-if="tile"
+    class="tech-logo"
+    :viewBox="`0 0 ${tileWidth} 16`"
+    :height="height"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <rect :width="tileWidth" height="16" rx="3.5" :fill="tile.bg" />
+    <text
+      :x="tileWidth / 2"
+      y="8.4"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      :fill="tile.fg"
+      font-family="'JetBrains Mono', ui-monospace, monospace"
+      font-size="8.5"
+      font-weight="700"
+    >
+      {{ tile.text }}
+    </text>
+  </svg>
 </template>
 
 <style scoped>
@@ -31,5 +112,9 @@ const icon = computed(() => techIconFor(props.name))
   flex: none;
   width: auto;
   max-width: 2.6em;
+}
+
+.tech-logo--icon {
+  color: var(--signal-text);
 }
 </style>
