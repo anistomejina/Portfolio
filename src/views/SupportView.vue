@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {
   PhArrowUpRight,
-  PhGithubLogo,
   PhBriefcase,
   PhCoffee,
   PhHeart,
@@ -10,6 +9,7 @@ import {
 } from '@phosphor-icons/vue'
 import { computed, onBeforeUnmount, onMounted, ref, type Component } from 'vue'
 
+import GitHubIcon from '@/components/icons/GitHubIcon.vue'
 import GmailIcon from '@/components/icons/GmailIcon.vue'
 import LinkedInIcon from '@/components/icons/LinkedInIcon.vue'
 import ScrambleName from '@/components/ScrambleName.vue'
@@ -215,7 +215,7 @@ function isExternal(href: string): boolean {
             <span class="contact-label">
               <GmailIcon v-if="contact.key === 'email'" class="contact-icon" :size="16" />
               <LinkedInIcon v-else-if="contact.key === 'linkedin'" class="contact-icon" :size="15" />
-              <PhGithubLogo v-else class="contact-icon" :size="15" aria-hidden="true" />
+              <GitHubIcon v-else class="contact-icon" :size="15" />
               {{ contact.label }}
             </span>
             <span class="contact-value">{{ contact.value }}</span>

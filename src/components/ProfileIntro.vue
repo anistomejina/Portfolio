@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { PhGithubLogo } from '@phosphor-icons/vue'
 import { computed } from 'vue'
 
+import GitHubIcon from '@/components/icons/GitHubIcon.vue'
 import GmailIcon from '@/components/icons/GmailIcon.vue'
 import LinkedInIcon from '@/components/icons/LinkedInIcon.vue'
 import ProfileStatItem from '@/components/ProfileStatItem.vue'
@@ -103,14 +103,7 @@ const roleParts = computed<RolePart[]>(() => {
         :rel="link.rel"
         v-on="isEmailPlaceholder(link.href) ? mailtoHandlers : {}"
       >
-        <PhGithubLogo
-          v-if="link.brand === 'github'"
-          class="link-icon"
-          :size="14"
-          weight="regular"
-          aria-hidden="true"
-          focusable="false"
-        />
+        <GitHubIcon v-if="link.brand === 'github'" class="link-icon" :size="15" />
         <LinkedInIcon v-else-if="link.brand === 'linkedin'" class="link-icon" :size="16" />
         <GmailIcon v-else-if="link.brand === 'email'" class="link-icon" :size="16" />
         <span v-else-if="link.glyph" class="link-icon" aria-hidden="true">{{ link.glyph }}</span>

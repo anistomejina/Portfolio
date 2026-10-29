@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { PhArrowUpRight, PhGithubLogo } from '@phosphor-icons/vue'
+import { PhArrowUpRight } from '@phosphor-icons/vue'
 import { computed, ref, watch } from 'vue'
 
+import GitHubIcon from '@/components/icons/GitHubIcon.vue'
 import LockIcon from '@/components/icons/LockIcon.vue'
 import { useLocale } from '@/composables/useLocale'
 import type { Project } from '@/types/content'
@@ -168,7 +169,7 @@ const coverSrc = computed(() =>
           rel="noopener noreferrer"
           class="action-btn action-btn--external"
         >
-          <PhGithubLogo :size="13" aria-hidden="true" focusable="false" />
+          <GitHubIcon :size="13" />
           {{ labels.sourceCode }}
           <span class="sr-only">{{ copy.accessibility.opensInNewTab }}</span>
         </a>
