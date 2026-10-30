@@ -81,16 +81,26 @@ const tileWidth = computed(() => (tile.value ? Math.max(16, tile.value.text.leng
     focusable="false"
     v-html="logo.body"
   />
-  <img
-    v-else-if="image"
-    class="tech-logo tech-logo--image"
-    :src="image"
-    alt=""
-    :width="height"
-    :height="height"
-    loading="lazy"
-    decoding="async"
-  />
+  <span v-else-if="image" class="tech-logo tech-logo--image-wrap">
+    <img
+      class="tech-logo--image"
+      :class="{ 'tech-logo--light-only': image.dark }"
+      :src="image.src"
+      alt=""
+      :height="height"
+      loading="lazy"
+      decoding="async"
+    />
+    <img
+      v-if="image.dark"
+      class="tech-logo--image tech-logo--dark-only"
+      :src="image.dark"
+      alt=""
+      :height="height"
+      loading="lazy"
+      decoding="async"
+    />
+  </span>
   <component
     :is="iconComponent"
     v-else-if="iconComponent"
@@ -130,9 +140,31 @@ const tileWidth = computed(() => (tile.value ? Math.max(16, tile.value.text.leng
   max-width: 2.6em;
 }
 
+.tech-logo--image-wrap {
+  display: inline-flex;
+  /* Wordmark logos (NIST) are wider than square icons: no width cap on the wrapper. */
+  max-width: none;
+}
+
 .tech-logo--image {
+  display: block;
+  width: auto;
+  max-width: 4.5em;
   border-radius: 3px;
   object-fit: contain;
+}
+
+/* Logos with a separate light version (e.g. NIST): show the one that fits the theme. */
+.tech-logo--dark-only {
+  display: none;
+}
+
+:root[data-theme='dark'] .tech-logo--light-only {
+  display: none;
+}
+
+:root[data-theme='dark'] .tech-logo--dark-only {
+  display: block;
 }
 
 .tech-logo--icon {

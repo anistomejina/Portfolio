@@ -33,6 +33,10 @@ const TECH_ALIASES: Record<string, string> = {
   'junior penetration tester': 'tryhackme',
   'top 4% on tryhackme': 'tryhackme',
   'top 4 % auf tryhackme': 'tryhackme',
+  'ccna & ccnp': 'cisco',
+  'mcsa & mcse': 'microsoft',
+  'cloud computing with azure': 'azure',
+  gdpr: 'eu',
   'claude code': 'claude',
   codex: 'codex',
   docker: 'docker',
@@ -45,21 +49,30 @@ const TECH_ALIASES: Record<string, string> = {
   grafana: 'grafana',
 }
 
+/** A vendor logo image; `dark` is an optional light-coloured version for dark mode. */
+export type TechImage = { src: string; dark?: string }
+
 /**
- * Vendors whose logo is in no open icon set: their own small icons, saved in public/images/logos/
- * (Nmap's eye, Wazuh, Acunetix, Splunk).
+ * Vendors whose logo is in no open icon set: their own small icons, taken from their websites
+ * (ISO from Wikimedia Commons) and saved in public/images/logos/.
  */
-const IMAGE_LOGOS: Record<string, string> = {
-  nmap: 'images/logos/nmap.png',
-  wazuh: 'images/logos/wazuh.png',
-  acunetix: 'images/logos/acunetix.png',
-  splunk: 'images/logos/splunk.png',
+const IMAGE_LOGOS: Record<string, { src: string; dark?: string }> = {
+  nmap: { src: 'images/logos/nmap.png' },
+  wazuh: { src: 'images/logos/wazuh.png' },
+  acunetix: { src: 'images/logos/acunetix.png' },
+  splunk: { src: 'images/logos/splunk.png' },
+  nessus: { src: 'images/logos/nessus.png' },
+  cnsp: { src: 'images/logos/cnsp.png' },
+  'iso 27001': { src: 'images/logos/iso.png' },
+  'iso 27017': { src: 'images/logos/iso.png' },
+  nist: { src: 'images/logos/nist.png', dark: 'images/logos/nist-dark.png' },
 }
 
-/** URL of a vendor logo image for this label, or null. */
-export function techImageFor(label: string): string | null {
-  const path = IMAGE_LOGOS[label.trim().toLowerCase()]
-  return path ? asset(path) : null
+/** Vendor logo image(s) for this label, or null. */
+export function techImageFor(label: string): TechImage | null {
+  const entry = IMAGE_LOGOS[label.trim().toLowerCase()]
+  if (!entry) return null
+  return { src: asset(entry.src), dark: entry.dark ? asset(entry.dark) : undefined }
 }
 
 export function techIconFor(label: string): TechIcon | null {
