@@ -23,7 +23,7 @@ import {
   TEXT_BADGES,
   type IconBadgeName,
 } from '@/utils/techBadges'
-import { techIconFor } from '@/utils/techIcons'
+import { techIconFor, techImageFor } from '@/utils/techIcons'
 
 const props = defineProps<{
   /** The chip's label, e.g. "Docker" or "Microsoft Azure". Unknown labels render nothing. */
@@ -51,13 +51,19 @@ const ICON_COMPONENTS: Record<IconBadgeName, Component> = {
 const height = computed(() => props.size ?? 14)
 const key = computed(() => props.name.trim().toLowerCase())
 
-// 1. a real logo, 2. a line icon for a general skill, 3. a lettered tile for a named tool or cert.
+// 1. a real logo (vector, then vendor image), 2. a line icon for a general skill,
+// 3. a lettered tile for a named tool or cert.
 const logo = computed(() => techIconFor(props.name))
+const image = computed(() => (logo.value ? null : techImageFor(props.name)))
 const iconName = computed(
   () => ICON_BADGES_CASE_SENSITIVE[props.name.trim()] ?? ICON_BADGES[key.value] ?? null,
 )
-const iconComponent = computed(() => (iconName.value ? ICON_COMPONENTS[iconName.value] : null))
-const tile = computed(() => (logo.value || iconComponent.value ? null : (TEXT_BADGES[key.value] ?? null)))
+const iconComponent = computed(() =>
+  logo.value || image.value || !iconName.value ? null : ICON_COMPONENTS[iconName.value],
+)
+const tile = computed(() =>
+  logo.value || image.value || iconComponent.value ? null : (TEXT_BADGES[key.value] ?? null),
+)
 
 /** Tile width grows with the letters so "NIST" fits as well as "N". */
 const tileWidth = computed(() => (tile.value ? Math.max(16, tile.value.text.length * 6 + 6) : 16))
@@ -74,6 +80,16 @@ const tileWidth = computed(() => (tile.value ? Math.max(16, tile.value.text.leng
     aria-hidden="true"
     focusable="false"
     v-html="logo.body"
+  />
+  <img
+    v-else-if="image"
+    class="tech-logo tech-logo--image"
+    :src="image"
+    alt=""
+    :width="height"
+    :height="height"
+    loading="lazy"
+    decoding="async"
   />
   <component
     :is="iconComponent"
@@ -112,6 +128,11 @@ const tileWidth = computed(() => (tile.value ? Math.max(16, tile.value.text.leng
   flex: none;
   width: auto;
   max-width: 2.6em;
+}
+
+.tech-logo--image {
+  border-radius: 3px;
+  object-fit: contain;
 }
 
 .tech-logo--icon {
