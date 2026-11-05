@@ -42,7 +42,3 @@ Das sind die Findings mit hoher Wirkung, und jede hat eine kanonische Referenz, 
 Eine Referenzübersicht nützt nur, wenn sie widerspiegelt, wonach du tatsächlich greifst.
 
 Ich entferne veraltete Links und ergänze Write-ups, die mir etwas Neues beigebracht haben, damit der Index kurz genug bleibt, um ihn unter Zeitdruck zu überfliegen. Das Ziel ist nicht Vollständigkeit — sondern dass ich während eines Auftrags meine Aufmerksamkeit auf das Ziel richte, nicht darauf, mich zu erinnern, wo die Checkliste liegt.
-
----
-
-Basierend auf einem LogicalBreach-Academy-Cheatsheet. Das Original findest du unter [academy.logicalbreach.com](https://academy.logicalbreach.com/resources?tab=cheatsheets).

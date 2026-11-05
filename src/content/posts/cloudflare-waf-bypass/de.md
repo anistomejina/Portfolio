@@ -72,7 +72,3 @@ addons = [Normalise()]
 Der zuverlässigste „Bypass" ist gar keiner.
 
 Bei einem legitimen Auftrag ist der richtige Schritt, den Kunden zu bitten, deine Test-IP in Cloudflare auf die Allowlist zu setzen. Das entfernt jede obige Ebene auf einen Schlag, hält deine Tests im Scope und erspart den Kampf gegen eine WAF, die genau das tut, wofür sie gekauft wurde. Hebe die technischen Umwege für die Fälle auf, in denen eine Allowlist wirklich nicht möglich ist — und nur gegen Ziele, für deren Prüfung du autorisiert bist.
-
----
-
-Basierend auf einem LogicalBreach-Academy-Cheatsheet. Das Original findest du unter [academy.logicalbreach.com](https://academy.logicalbreach.com/resources?tab=cheatsheets).

@@ -58,7 +58,3 @@ Nach der Behebung lieferten Selbst-Reads weiter `200`, Cross-User-Reads `403 For
 | 2026-07-23 | Re-Test; Cross-User-Read jetzt `403` |
 
 Meine Lehre daraus: Authentifizierung sagt, *wer* aufruft; Autorisierung sagt, *was* er anfassen darf. BOLA lebt ganz in der Lücke zwischen beiden, und jeder Objekt-ID-Endpunkt braucht die zweite Prüfung, nicht nur die erste.
-
----
-
-Basierend auf einem LogicalBreach-Academy-Write-up (Autor gpk21). Das Original findest du unter [academy.logicalbreach.com](https://academy.logicalbreach.com/resources?tab=writeups).

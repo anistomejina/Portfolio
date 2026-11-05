@@ -64,7 +64,3 @@ sqlmap confirmed MySQL time-based blind injection and enumerated the visible sch
 Unauthenticated database read access on a public endpoint is high severity — the CVE carries CVSS 9.1 — even when the proof stops at schema names.
 
 The report scoped the demonstration responsibly: it proved the oracle and read metadata, but did not extract table rows, credentials or PII, and made no RCE claim. For me the lessons are two. First, opaque IDs are not a security boundary — decoding user input and feeding it to a query is still injection, base64 or not. Second, the fix is the same as it has always been for SQLi: parameterised queries, so no amount of crafted `id` can change the query's structure. Keeping the destructive-potential PoC minimal and non-disruptive is what makes a finding like this safe to demonstrate on a live target.
-
----
-
-Based on a LogicalBreach Academy write-up (author pyus3r). Read the original at [academy.logicalbreach.com](https://academy.logicalbreach.com/resources?tab=writeups).

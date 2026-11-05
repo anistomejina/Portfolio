@@ -40,7 +40,3 @@ No single control solves this, so the realistic posture is defence in depth.
 Prompt injection is best understood as untrusted input reaching an interpreter — the same shape as SQL injection or XSS, with a model as the interpreter.
 
 That framing is freeing, because it points at familiar engineering answers: never trust input, constrain what the interpreter can reach, and assume the boundary will eventually be crossed. Design so that when it is, the model simply did not have the privilege to do real harm.
-
----
-
-Based on a LogicalBreach Academy cheatsheet. Read the original at [academy.logicalbreach.com](https://academy.logicalbreach.com/resources?tab=cheatsheets).

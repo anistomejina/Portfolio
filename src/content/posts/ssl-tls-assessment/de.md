@@ -44,7 +44,3 @@ Befunde nützen nur, wenn sie auf eine Behebung verweisen.
 | Ablaufendes Zertifikat | Ausfall- und Vertrauensrisiko | Erneuern und Rotation automatisieren |
 
 Schließe jeden Punkt mit der konkreten Server-Konfigurationsänderung ab, nicht nur mit dem Label — ein Report, der „TLS 1.0 deaktivieren" sagt und die Direktive nennt, ist einer, den das Team noch am selben Tag umsetzen kann.
-
----
-
-Basierend auf einem LogicalBreach-Academy-Cheatsheet. Das Original findest du unter [academy.logicalbreach.com](https://academy.logicalbreach.com/resources?tab=cheatsheets).
