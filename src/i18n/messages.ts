@@ -370,8 +370,8 @@ const en: Messages = {
         location: 'Coimbatore, India',
         // YOUR CONTENT: generic summary, replace with your actual work.
         description:
-          'Building security into CI/CD pipelines and cloud infrastructure: automating deployments with infrastructure as code, hardening AWS environments and adding security checks and monitoring to the delivery process.',
-        skills: ['DevSecOps', 'AWS', 'Terraform', 'Jenkins', 'Docker', 'CI/CD security'],
+          'Building security into multi-cloud operations across GCP, OCI and Azure: hardening cloud environments, running SecOps with Sophos tooling, and aligning controls to ISO 27001 — working with the CISO on security strategy and governance.',
+        skills: ['DevSecOps', 'GCP', 'OCI', 'Azure', 'Sophos', 'SecOps', 'CISO', 'ISO 27001'],
       },
       {
         slug: 'career-ladder',
@@ -705,8 +705,8 @@ const de: Messages = {
         location: 'Coimbatore, Indien',
         // YOUR CONTENT: allgemeine Zusammenfassung, durch deine tatsächliche Arbeit ersetzen.
         description:
-          'Sicherheit in CI/CD-Pipelines und Cloud-Infrastruktur verankern: Deployments mit Infrastructure as Code automatisieren, AWS-Umgebungen härten und Security-Checks sowie Monitoring in den Delivery-Prozess integrieren.',
-        skills: ['DevSecOps', 'AWS', 'Terraform', 'Jenkins', 'Docker', 'CI/CD-Security'],
+          'Sicherheit im Multi-Cloud-Betrieb über GCP, OCI und Azure verankern: Cloud-Umgebungen härten, SecOps mit Sophos-Tooling betreiben und Kontrollen an ISO 27001 ausrichten — in Zusammenarbeit mit dem CISO an Security-Strategie und Governance.',
+        skills: ['DevSecOps', 'GCP', 'OCI', 'Azure', 'Sophos', 'SecOps', 'CISO', 'ISO 27001'],
       },
       {
         slug: 'career-ladder',
