@@ -283,7 +283,7 @@ const en: Messages = {
     items: [
       {
         slug: 'wpgraphql-sqli',
-        title: 'Write-up: unauthenticated blind SQL injection in WPGraphQL (CVE-2026-40762)',
+        title: 'Unauthenticated blind SQL injection in WPGraphQL',
         excerpt:
           'A base64 Relay global ID decoded straight into a MySQL query, giving an unauthenticated timing oracle over a public GraphQL endpoint. How the sink works, a non-destructive time-based PoC, and why opaque IDs are not a security boundary.',
         category: 'writeup',
@@ -294,7 +294,7 @@ const en: Messages = {
       },
       {
         slug: 'idor-crm-contact',
-        title: 'Write-up: an authenticated IDOR leaking internal CRM contact IDs',
+        title: 'Authenticated IDOR leaking internal CRM contact IDs',
         excerpt:
           'A mobile API returned another business user’s internal CRM Contact ID from a swapped path parameter — authentication enforced, authorization forgotten. A textbook BOLA, scoped honestly, from report to 403.',
         category: 'writeup',
@@ -304,7 +304,7 @@ const en: Messages = {
       },
       {
         slug: 'llm-prompt-injection',
-        title: 'LLM prompt injection & jailbreaking: a defender’s field guide',
+        title: 'LLM prompt injection & jailbreaking',
         excerpt:
           'Prompt injection is untrusted input reaching an interpreter that happens to be a language model. A map of the attack shapes — direct, indirect, obfuscated — and the defence-in-depth that actually holds.',
         category: 'web-security',
@@ -314,7 +314,7 @@ const en: Messages = {
       },
       {
         slug: 'cloudflare-waf-bypass',
-        title: 'Bypassing Cloudflare’s WAF during an authorised assessment',
+        title: 'Bypassing Cloudflare’s WAF',
         excerpt:
           'When Burp gets a 403 but the browser loads fine, the block is a fingerprint, not a header. How to diagnose which layer is tripping and fix it in order of effort — starting by asking the client to allowlist you.',
         category: 'web-security',
@@ -324,7 +324,7 @@ const en: Messages = {
       },
       {
         slug: 'ai-assisted-pentesting',
-        title: 'Automated pentesting with an AI assistant: strong hands, weak autopilot',
+        title: 'Automated pentesting with an AI assistant',
         excerpt:
           'A model is fast at enumeration and checklists and poor at business logic. The surprising upside is that it can recognise what it missed — which is exactly where a human should look.',
         category: 'learning',
@@ -618,7 +618,7 @@ const de: Messages = {
     items: [
       {
         slug: 'wpgraphql-sqli',
-        title: 'Write-up: unauthentifizierte blinde SQL-Injection in WPGraphQL (CVE-2026-40762)',
+        title: 'Unauthentifizierte blinde SQL-Injection in WPGraphQL',
         excerpt:
           'Eine base64-Relay-Global-ID landete direkt in einer MySQL-Abfrage und lieferte ein unauthentifiziertes Timing-Orakel über einen öffentlichen GraphQL-Endpunkt. Wie die Sink funktioniert, eine störungsfreie zeitbasierte PoC und warum opake IDs keine Sicherheitsgrenze sind.',
         category: 'writeup',
@@ -629,7 +629,7 @@ const de: Messages = {
       },
       {
         slug: 'idor-crm-contact',
-        title: 'Write-up: ein authentifizierter IDOR, der interne CRM-Contact-IDs preisgibt',
+        title: 'Authentifizierter IDOR, der interne CRM-Contact-IDs preisgibt',
         excerpt:
           'Eine Mobile-API gab die interne CRM-Contact-ID eines anderen Business-Users aus einem ausgetauschten Pfadparameter zurück — Authentifizierung erzwungen, Autorisierung vergessen. Ein Lehrbuch-BOLA, ehrlich eingeordnet, vom Report bis zum 403.',
         category: 'writeup',
@@ -639,7 +639,7 @@ const de: Messages = {
       },
       {
         slug: 'llm-prompt-injection',
-        title: 'LLM Prompt Injection & Jailbreaking: ein Leitfaden für Verteidiger',
+        title: 'LLM Prompt Injection & Jailbreaking',
         excerpt:
           'Prompt Injection ist nicht vertrauenswürdige Eingabe, die einen Interpreter erreicht, der zufällig ein Sprachmodell ist. Eine Karte der Angriffsformen — direkt, indirekt, verschleiert — und die Verteidigung in der Tiefe, die wirklich hält.',
         category: 'web-security',
@@ -649,7 +649,7 @@ const de: Messages = {
       },
       {
         slug: 'cloudflare-waf-bypass',
-        title: 'Cloudflares WAF bei einer autorisierten Prüfung umgehen',
+        title: 'Cloudflares WAF umgehen',
         excerpt:
           'Wenn Burp ein 403 bekommt, der Browser aber lädt, ist die Blockade ein Fingerabdruck, kein Header. Wie man herausfindet, welche Ebene auslöst, und sie nach Aufwand behebt — beginnend damit, den Kunden um eine Allowlist zu bitten.',
         category: 'web-security',
@@ -659,7 +659,7 @@ const de: Messages = {
       },
       {
         slug: 'ai-assisted-pentesting',
-        title: 'Automatisiertes Pentesting mit einem AI-Assistenten: starke Hände, schwacher Autopilot',
+        title: 'Automatisiertes Pentesting mit einem AI-Assistenten',
         excerpt:
           'Ein Modell ist schnell bei Enumeration und Checklisten und schwach bei Geschäftslogik. Der überraschende Vorteil: Es erkennt, was es übersehen hat — genau dorthin sollte ein Mensch schauen.',
         category: 'learning',
