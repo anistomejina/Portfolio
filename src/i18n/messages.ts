@@ -282,6 +282,27 @@ const en: Messages = {
     // YOUR CONTENT: the home page shows the first two.
     items: [
       {
+        slug: 'wpgraphql-sqli',
+        title: 'Write-up: unauthenticated blind SQL injection in WPGraphQL (CVE-2026-40762)',
+        excerpt:
+          'A base64 Relay global ID decoded straight into a MySQL query, giving an unauthenticated timing oracle over a public GraphQL endpoint. How the sink works, a non-destructive time-based PoC, and why opaque IDs are not a security boundary.',
+        category: 'writeup',
+        publishedAt: '2026-11-06',
+        readingTimeMinutes: 7,
+        featured: true,
+        hasDetails: true,
+      },
+      {
+        slug: 'idor-crm-contact',
+        title: 'Write-up: an authenticated IDOR leaking internal CRM contact IDs',
+        excerpt:
+          'A mobile API returned another business user’s internal CRM Contact ID from a swapped path parameter — authentication enforced, authorization forgotten. A textbook BOLA, scoped honestly, from report to 403.',
+        category: 'writeup',
+        publishedAt: '2026-11-05',
+        readingTimeMinutes: 7,
+        hasDetails: true,
+      },
+      {
         slug: 'llm-prompt-injection',
         title: 'LLM prompt injection & jailbreaking: a defender’s field guide',
         excerpt:
@@ -289,7 +310,6 @@ const en: Messages = {
         category: 'web-security',
         publishedAt: '2026-11-04',
         readingTimeMinutes: 9,
-        featured: true,
         hasDetails: true,
       },
       {
@@ -597,6 +617,27 @@ const de: Messages = {
     // YOUR CONTENT (same slugs as English): the home page shows the first two.
     items: [
       {
+        slug: 'wpgraphql-sqli',
+        title: 'Write-up: unauthentifizierte blinde SQL-Injection in WPGraphQL (CVE-2026-40762)',
+        excerpt:
+          'Eine base64-Relay-Global-ID landete direkt in einer MySQL-Abfrage und lieferte ein unauthentifiziertes Timing-Orakel über einen öffentlichen GraphQL-Endpunkt. Wie die Sink funktioniert, eine störungsfreie zeitbasierte PoC und warum opake IDs keine Sicherheitsgrenze sind.',
+        category: 'writeup',
+        publishedAt: '2026-11-06',
+        readingTimeMinutes: 7,
+        featured: true,
+        hasDetails: true,
+      },
+      {
+        slug: 'idor-crm-contact',
+        title: 'Write-up: ein authentifizierter IDOR, der interne CRM-Contact-IDs preisgibt',
+        excerpt:
+          'Eine Mobile-API gab die interne CRM-Contact-ID eines anderen Business-Users aus einem ausgetauschten Pfadparameter zurück — Authentifizierung erzwungen, Autorisierung vergessen. Ein Lehrbuch-BOLA, ehrlich eingeordnet, vom Report bis zum 403.',
+        category: 'writeup',
+        publishedAt: '2026-11-05',
+        readingTimeMinutes: 7,
+        hasDetails: true,
+      },
+      {
         slug: 'llm-prompt-injection',
         title: 'LLM Prompt Injection & Jailbreaking: ein Leitfaden für Verteidiger',
         excerpt:
@@ -604,7 +645,6 @@ const de: Messages = {
         category: 'web-security',
         publishedAt: '2026-11-04',
         readingTimeMinutes: 9,
-        featured: true,
         hasDetails: true,
       },
       {
