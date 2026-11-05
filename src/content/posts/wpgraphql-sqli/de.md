@@ -64,7 +64,3 @@ sqlmap bestätigte die zeitbasierte blinde MySQL-Injection und enumerierte die s
 Unauthentifizierter Datenbank-Lesezugriff an einem öffentlichen Endpunkt ist hoch eingestuft — der CVE trägt CVSS 9.1 — selbst wenn der Nachweis bei Schema-Namen endet.
 
 Der Report hielt die Demonstration verantwortungsvoll knapp: Er wies das Orakel nach und las Metadaten, extrahierte aber keine Tabellenzeilen, Zugangsdaten oder PII und erhob keinen RCE-Anspruch. Für mich gibt es zwei Lehren. Erstens: Opake IDs sind keine Sicherheitsgrenze — Nutzereingaben zu decodieren und einer Abfrage zu übergeben ist weiterhin Injection, base64 hin oder her. Zweitens: Der Fix ist derselbe wie seit jeher bei SQLi — parametrisierte Abfragen, damit keine noch so raffinierte `id` die Struktur der Abfrage ändern kann. Die destruktive PoC minimal und störungsfrei zu halten, macht einen solchen Fund auf einem Live-Ziel sicher vorführbar.
-
----
-
-Basierend auf einem LogicalBreach-Academy-Write-up (Autor pyus3r). Das Original findest du unter [academy.logicalbreach.com](https://academy.logicalbreach.com/resources?tab=writeups).

@@ -72,7 +72,3 @@ If the block survives clean headers, the TLS stack is the tell. A browser-impers
 The most reliable "bypass" is not a bypass at all.
 
 For a legitimate engagement, the right move is to ask the client to allowlist your assessment IP in Cloudflare. It removes every layer above in one step, keeps your testing in scope, and avoids fighting a WAF that is doing exactly what it was bought to do. Reserve the technical workarounds for the cases where allowlisting genuinely is not possible — and only ever against targets you are authorised to test.
-
----
-
-Based on a LogicalBreach Academy cheatsheet. Read the original at [academy.logicalbreach.com](https://academy.logicalbreach.com/resources?tab=cheatsheets).

@@ -44,7 +44,3 @@ Findings are only useful when they map to a fix.
 | Expiring certificate | Outage and trust risk | Renew and automate rotation |
 
 Close each item with the concrete server-config change, not just the label — a report that says "disable TLS 1.0" and names the directive is one the team can act on the same day.
-
----
-
-Based on a LogicalBreach Academy cheatsheet. Read the original at [academy.logicalbreach.com](https://academy.logicalbreach.com/resources?tab=cheatsheets).

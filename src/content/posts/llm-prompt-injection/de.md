@@ -40,7 +40,3 @@ Keine einzelne Maßnahme löst das, deshalb ist die realistische Haltung Verteid
 Prompt Injection versteht man am besten als nicht vertrauenswürdige Eingabe, die einen Interpreter erreicht — dieselbe Form wie SQL-Injection oder XSS, mit einem Modell als Interpreter.
 
 Dieses Framing befreit, weil es auf vertraute Engineering-Antworten zeigt: niemals der Eingabe vertrauen, einschränken, was der Interpreter erreichen kann, und davon ausgehen, dass die Grenze irgendwann überschritten wird. Baue so, dass das Modell dann schlicht nicht die Rechte hatte, echten Schaden anzurichten.
-
----
-
-Basierend auf einem LogicalBreach-Academy-Cheatsheet. Das Original findest du unter [academy.logicalbreach.com](https://academy.logicalbreach.com/resources?tab=cheatsheets).

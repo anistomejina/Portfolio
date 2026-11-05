@@ -42,7 +42,3 @@ These are the high-impact findings, and each has a canonical reference worth int
 A resource map is only useful if it reflects what you actually reach for.
 
 I prune links that go stale and add write-ups that taught me something new, so the index stays short enough to scan under time pressure. The goal is not completeness — it is that during an engagement I spend my attention on the target, not on remembering where the checklist lives.
-
----
-
-Based on a LogicalBreach Academy cheatsheet. Read the original at [academy.logicalbreach.com](https://academy.logicalbreach.com/resources?tab=cheatsheets).

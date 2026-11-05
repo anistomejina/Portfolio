@@ -58,7 +58,3 @@ After remediation, self-reads still returned `200`, cross-user reads returned `4
 | 2026-07-23 | Re-tested; cross-user read now `403` |
 
 The lesson I take from it: authentication tells you *who is calling*; authorization tells you *what they may touch*. BOLA lives entirely in the gap between those two, and every object-ID endpoint needs the second check, not just the first.
-
----
-
-Based on a LogicalBreach Academy write-up (author gpk21). Read the original at [academy.logicalbreach.com](https://academy.logicalbreach.com/resources?tab=writeups).
